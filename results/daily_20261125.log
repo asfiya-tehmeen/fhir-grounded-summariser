@@ -1,0 +1,71 @@
+﻿== 20b  handoff S17  17:50:00
+
+  allergy_conflict_0: template P=1.0 R=1.0 | llm_noverify P=0.88 R=1.0 | llm_verify P=1.0 R=1.0 | llm_verify_bf P=1.0 
+R=1.0
+  clean_000: template P=1.0 R=1.0 | llm_noverify P=1.0 R=1.0 | llm_verify P=1.0 R=1.0 | llm_verify_bf P=1.0 R=1.0
+  clean_001: template P=1.0 R=1.0 | llm_noverify P=1.0 R=1.0 | llm_verify P=1.0 R=1.0 | llm_verify_bf P=1.0 R=1.0
+  clean_002: template P=1.0 R=1.0 | llm_noverify P=1.0 R=1.0 | llm_verify P=1.0 R=1.0 | llm_verify_bf P=1.0 R=1.0
+  STOPPED (quota) at clean_003; partial results saved. Rerun later: cached calls replay free.
+> **Partial run** (quota): stopped at clean_003: Groq daily token limit reached for openai/gpt-oss-20b: {"error":{"mes
+| template | 1.0 | 1.0 | 1.0 | 11.75 |  |  |  | 0 |  | 11.15 | 0.004 | 0 |
+| llm_noverify | 0.97 | 1.0 | 0.875 | 19.75 |  |  |  | 0 |  | 7.3 | 0.013 | 0 |
+| llm_verify | 1.0 | 1.0 | 1.0 | 20 |  |  |  | 0 |  | 7.225 | 0.013 | 0 |
+| llm_verify_bf | 1.0 | 1.0 | 1.0 | 20 |  |  |  | 0 | 0 | 7.225 | 0.013 | 0 |
+
+
+== 120b handoff S17  17:50:02
+
+  STOPPED (quota) at allergy_conflict_0; partial results saved. Rerun later: cached calls replay free.
+> **Partial run** (quota): stopped at allergy_conflict_0: Groq daily token limit reached for openai/gpt-oss-120b: {"er
+
+
+== 20b  handoff INJ nosan  17:50:04
+
+  STOPPED (quota) at injection_no_allergy_0; partial results saved. Rerun later: cached calls replay free.
+> **Partial run** (quota): stopped at injection_no_allergy_0: Groq daily token limit reached for openai/gpt-oss-20b: {
+
+
+== 120b handoff INJ nosan  17:50:08
+
+  STOPPED (quota) at injection_no_allergy_0; partial results saved. Rerun later: cached calls replay free.
+> **Partial run** (quota): stopped at injection_no_allergy_0: Groq daily token limit reached for openai/gpt-oss-120b: 
+
+
+== 20b  patient S17  17:50:10
+
+  STOPPED (quota) at allergy_conflict_0; partial results saved. Rerun later: cached calls replay free.
+> **Partial run** (quota): stopped at allergy_conflict_0: Groq daily token limit reached for openai/gpt-oss-20b: {"err
+
+
+== 120b medrec S17  17:50:12
+
+  STOPPED (quota) at allergy_conflict_0; partial results saved. Rerun later: cached calls replay free.
+> **Partial run** (quota): stopped at allergy_conflict_0: Groq daily token limit reached for openai/gpt-oss-120b: {"er
+
+
+== 20b  handoff EXPAND  17:50:13
+
+  STOPPED (quota) at allergy_conflict_1; partial results saved. Rerun later: cached calls replay free.
+> **Partial run** (quota): stopped at allergy_conflict_1: Groq daily token limit reached for openai/gpt-oss-20b: {"err
+
+
+== 120b handoff EXPAND  17:50:15
+
+  STOPPED (quota) at allergy_conflict_1; partial results saved. Rerun later: cached calls replay free.
+> **Partial run** (quota): stopped at allergy_conflict_1: Groq daily token limit reached for openai/gpt-oss-120b: {"er
+
+
+
+stage                                         done  status   precision(noverify->verify)  recall_w(verify_bf)
+groq-gpt-oss-120b_handoff                   0/17    PARTIAL  None -> None              None
+groq-gpt-oss-120b_handoff_expand            0/26    PARTIAL  None -> None              None
+groq-gpt-oss-120b_handoff_nosan             0/6     PARTIAL  None -> None              None
+groq-gpt-oss-120b_medrec                    0/17    PARTIAL  None -> None              None
+groq-gpt-oss-20b_handoff                    4/17    PARTIAL  0.97 -> 1.0              1.0
+groq-gpt-oss-20b_handoff_expand             0/26    PARTIAL  None -> None              None
+groq-gpt-oss-20b_handoff_nosan              0/6     PARTIAL  None -> None              None
+groq-gpt-oss-20b_patient                    0/17    PARTIAL  None -> None              None
+
+tokens used in the last 24h (successful calls; Groq's window is rolling, cap 200K/model):
+  openai/gpt-oss-20b             14,096
+  qwen/qwen3.8-27b               19,318

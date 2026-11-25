@@ -1,0 +1,25 @@
+[project]
+name = "fhirsum"
+version = "0.1.0"
+description = "SMART on FHIR clinical summariser where every claim cites a FHIR resource and is verified by code"
+requires-python = ">=3.10"
+dependencies = [
+  "pydantic>=2",
+  "httpx>=0.27",
+  "fastapi>=0.110",
+  "uvicorn>=0.29",
+]
+[project.optional-dependencies]
+anthropic = ["anthropic>=0.70"]
+dev = ["pytest"]
+[project.scripts]
+fhirsum = "fhirsum.cli:main"
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+[tool.setuptools.packages.find]
+where = ["src"]
+[tool.setuptools.package-data]
+fhirsum = ["static/*"]
+[tool.pytest.ini_options]
+testpaths = ["tests"]

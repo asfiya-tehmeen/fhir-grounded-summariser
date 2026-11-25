@@ -1,0 +1,11 @@
+# Local HAPI FHIR R4 server: http://localhost:8080/fhir
+# Load Synthea bundles:  python -c "from fhirsum.sources import *; from pathlib import Path; [upload_to_hapi('http://localhost:8080/fhir', p) for p in load_synthea_dir('data/raw/synthea/fhir')]"
+services:
+  hapi:
+    image: hapiproject/hapi:latest
+    ports:
+      - "8080:8080"
+    environment:
+      hapi.fhir.fhir_version: R4
+      hapi.fhir.allow_external_references: "true"
+      hapi.fhir.bulk_export_enabled: "false"

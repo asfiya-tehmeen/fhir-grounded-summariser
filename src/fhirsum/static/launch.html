@@ -1,0 +1,21 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>FHIR summariser – SMART launch</title>
+<script src="https://cdn.jsdelivr.net/npm/fhirclient@2/build/fhir-client.min.js"></script>
+</head>
+<body>
+<p>Launching SMART on FHIR app…</p>
+<script>
+  // EHR launch: the sandbox calls launch.html?iss=...&launch=...
+  // Standalone launch: open launch.html?iss=https://launch.smarthealthit.org/v/r4/fhir
+  FHIR.oauth2.authorize({
+    clientId: "fhirsum-demo",
+    scope: "launch launch/patient openid fhirUser patient/*.read",
+    redirectUri: "index.html"
+  });
+</script>
+</body>
+</html>

@@ -1,0 +1,9 @@
+{
+ "n_patients": 0,
+ "systems": {},
+ "stopped_early": "allergy_conflict_0: Groq daily token limit reached for openai/gpt-oss-20b: {\"error\":{\"message\":\"Rate limit reached for model `openai/gpt-oss-20b` in organization `org_01m852nhzsevpvfg2rvn5b8xfa` service tier `on_demand` on tokens per day (TPD): Limit 200000, Used 199990, Requested 3557. Please try again in 25m32.304s. Need more tokens? Upgrade to Dev Tier today at https://",
+ "n_target": 17,
+ "model": "groq:openai/gpt-oss-20b",
+ "summary_type": "patient",
+ "sanitise": true
+}

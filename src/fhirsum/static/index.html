@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>FHIR-grounded summariser</title>
+<link rel="stylesheet" href="style.css">
+<script src="https://cdn.jsdelivr.net/npm/fhirclient@2/build/fhir-client.min.js"></script>
+</head>
+<body>
+<header>
+  <h1>FHIR-grounded summariser</h1>
+  <p class="sub">Every sentence cites the FHIR resource it came from and is checked by code. Research prototype; not for clinical use.</p>
+</header>
+<section class="controls">
+  <label>Source
+    <select id="patient"><option value="">loading…</option></select>
+  </label>
+  <label>Summary
+    <select id="stype">
+      <option value="handoff">Clinician handoff</option>
+      <option value="medrec">Medication reconciliation</option>
+      <option value="patient">Patient-friendly</option>
+    </select>
+  </label>
+  <label>Model
+    <select id="provider">
+      <option value="groq">Groq (free tier)</option>
+      <option value="anthropic">Claude (Anthropic API)</option>
+      <option value="ollama">Ollama (local)</option>
+      <option value="template">Template only (no LLM)</option>
+      <option value="mock">Mock (test double)</option>
+    </select>
+  </label>
+  <label class="chk"><input type="checkbox" id="verify" checked> Verify claims</label>
+  <button id="go">Summarise</button>
+  <span id="status" role="status"></span>
+</section>
+<main>
+  <article id="summary"><p class="muted">Pick a patient and press Summarise.</p></article>
+  <aside id="source"><h2>Source resource</h2><p class="muted">Click a citation chip to see the FHIR resource it points to.</p><pre id="json"></pre></aside>
+</main>
+<script src="app.js"></script>
+</body>
+</html>

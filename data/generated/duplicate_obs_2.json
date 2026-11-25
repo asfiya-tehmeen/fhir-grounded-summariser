@@ -1,0 +1,2021 @@
+{
+ "resourceType": "Bundle",
+ "type": "collection",
+ "entry": [
+  {
+   "fullUrl": "Patient/8b09f72a-ec63-248b-d008-ca8ba8c7bd60",
+   "resource": {
+    "resourceType": "Patient",
+    "id": "8b09f72a-ec63-248b-d008-ca8ba8c7bd60",
+    "gender": "male",
+    "birthDate": "1972-10-28",
+    "name": [
+     {
+      "family": "Synthetic336",
+      "given": [
+       "Test"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "fullUrl": "Condition/8fd98ac5-39c9-f42c-13b6-712972e05ffc",
+   "resource": {
+    "resourceType": "Condition",
+    "code": {
+     "coding": [
+      {
+       "system": "http://snomed.info/sct",
+       "code": "55822004",
+       "display": "Hyperlipidemia (disorder)"
+      }
+     ],
+     "text": "Hyperlipidemia (disorder)"
+    },
+    "clinicalStatus": {
+     "coding": [
+      {
+       "system": "http://terminology.hl7.org/CodeSystem/condition-clinical",
+       "code": "active",
+       "display": "active"
+      }
+     ],
+     "text": "active"
+    },
+    "onsetDateTime": "2018-06-27",
+    "id": "8fd98ac5-39c9-f42c-13b6-712972e05ffc",
+    "subject": {
+     "reference": "Patient/8b09f72a-ec63-248b-d008-ca8ba8c7bd60"
+    }
+   }
+  },
+  {
+   "fullUrl": "MedicationRequest/17c4a02e-ddea-3f53-66cd-1ca58377202b",
+   "resource": {
+    "resourceType": "MedicationRequest",
+    "status": "active",
+    "intent": "order",
+    "medicationCodeableConcept": {
+     "coding": [
+      {
+       "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+       "code": "259255",
+       "display": "atorvastatin 80 MG Oral Tablet"
+      }
+     ],
+     "text": "atorvastatin 80 MG Oral Tablet"
+    },
+    "authoredOn": "2018-07-08",
+    "id": "17c4a02e-ddea-3f53-66cd-1ca58377202b",
+    "subject": {
+     "reference": "Patient/8b09f72a-ec63-248b-d008-ca8ba8c7bd60"
+    }
+   }
+  },
+  {
+   "fullUrl": "Condition/9be27272-c78e-ab12-21e7-0cd01712bad3",
+   "resource": {
+    "resourceType": "Condition",
+    "code": {
+     "coding": [
+      {
+       "system": "http://snomed.info/sct",
+       "code": "239873007",
+       "display": "Osteoarthritis of knee (disorder)"
+      }
+     ],
+     "text": "Osteoarthritis of knee (disorder)"
+    },
+    "clinicalStatus": {
+     "coding": [
+      {
+       "system": "http://terminology.hl7.org/CodeSystem/condition-clinical",
+       "code": "active",
+       "display": "active"
+      }
+     ],
+     "text": "active"
+    },
+    "onsetDateTime": "2023-02-07",
+    "id": "9be27272-c78e-ab12-21e7-0cd01712bad3",
+    "subject": {
+     "reference": "Patient/8b09f72a-ec63-248b-d008-ca8ba8c7bd60"
+    }
+   }
+  },
+  {
+   "fullUrl": "MedicationRequest/fd9adbb1-588d-afa3-a56c-d053383c2e75",
+   "resource": {
+    "resourceType": "MedicationRequest",
+    "status": "active",
+    "intent": "order",
+    "medicationCodeableConcept": {
+     "coding": [
+      {
+       "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+       "code": "198405",
+       "display": "ibuprofen 400 MG Oral Tablet"
+      }
+     ],
+     "text": "ibuprofen 400 MG Oral Tablet"
+    },
+    "authoredOn": "2023-02-09",
+    "id": "fd9adbb1-588d-afa3-a56c-d053383c2e75",
+    "subject": {
+     "reference": "Patient/8b09f72a-ec63-248b-d008-ca8ba8c7bd60"
+    }
+   }
+  },
+  {
+   "fullUrl": "Condition/d002b4dd-b056-d13a-b4c4-8fe59edb3eb4",
+   "resource": {
+    "resourceType": "Condition",
+    "code": {
+     "coding": [
+      {
+       "system": "http://snomed.info/sct",
+       "code": "10509002",
+       "display": "Acute bronchitis (disorder)"
+      }
+     ],
+     "text": "Acute bronchitis (disorder)"
+    },
+    "clinicalStatus": {
+     "coding": [
+      {
+       "system": "http://terminology.hl7.org/CodeSystem/condition-clinical",
+       "code": "resolved",
+       "display": "resolved"
+      }
+     ],
+     "text": "resolved"
+    },
+    "onsetDateTime": "2023-06-25",
+    "abatementDateTime": "2023-07-09",
+    "id": "d002b4dd-b056-d13a-b4c4-8fe59edb3eb4",
+    "subject": {
+     "reference": "Patient/8b09f72a-ec63-248b-d008-ca8ba8c7bd60"
+    }
+   }
+  },
+  {
+   "fullUrl": "MedicationRequest/60d989aa-7a76-19c3-9a82-f775945fce5e",
+   "resource": {
+    "resourceType": "MedicationRequest",
+    "status": "stopped",
+    "intent": "order",
+    "medicationCodeableConcept": {
+     "coding": [
+      {
+       "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+       "code": "308182",
+       "display": "amoxicillin 250 MG Oral Capsule"
+      }
+     ],
+     "text": "amoxicillin 250 MG Oral Capsule"
+    },
+    "authoredOn": "2022-12-10",
+    "id": "60d989aa-7a76-19c3-9a82-f775945fce5e",
+    "subject": {
+     "reference": "Patient/8b09f72a-ec63-248b-d008-ca8ba8c7bd60"
+    }
+   }
+  },
+  {
+   "fullUrl": "AllergyIntolerance/50758504-41e3-40f8-213c-570eb4085b07",
+   "resource": {
+    "resourceType": "AllergyIntolerance",
+    "code": {
+     "coding": [
+      {
+       "system": "http://snomed.info/sct",
+       "code": "256349002",
+       "display": "Peanut - dietary (substance)"
+      }
+     ],
+     "text": "Peanut - dietary (substance)"
+    },
+    "clinicalStatus": {
+     "coding": [
+      {
+       "system": "http://terminology.hl7.org/CodeSystem/allergyintolerance-clinical",
+       "code": "active",
+       "display": "active"
+      }
+     ],
+     "text": "active"
+    },
+    "verificationStatus": {
+     "coding": [
+      {
+       "system": "http://terminology.hl7.org/CodeSystem/allergyintolerance-verification",
+       "code": "confirmed",
+       "display": "confirmed"
+      }
+     ],
+     "text": "confirmed"
+    },
+    "criticality": "high",
+    "recordedDate": "2016-07-09",
+    "id": "50758504-41e3-40f8-213c-570eb4085b07",
+    "patient": {
+     "reference": "Patient/8b09f72a-ec63-248b-d008-ca8ba8c7bd60"
+    }
+   }
+  },
+  {
+   "fullUrl": "Observation/3ee13646-b32d-f048-a0a4-c8a8dbc124e1",
+   "resource": {
+    "resourceType": "Observation",
+    "status": "final",
+    "code": {
+     "coding": [
+      {
+       "system": "http://loinc.org",
+       "code": "4548-4",
+       "display": "Hemoglobin A1c/Hemoglobin.total in Blood"
+      }
+     ],
+     "text": "Hemoglobin A1c/Hemoglobin.total in Blood"
+    },
+    "category": [
+     {
+      "coding": [
+       {
+        "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+        "code": "laboratory",
+        "display": "laboratory"
+       }
+      ],
+      "text": "laboratory"
+     }
+    ],
+    "effectiveDateTime": "2022-02-13",
+    "valueQuantity": {
+     "value": 5.4,
+     "unit": "%"
+    },
+    "id": "3ee13646-b32d-f048-a0a4-c8a8dbc124e1",
+    "subject": {
+     "reference": "Patient/8b09f72a-ec63-248b-d008-ca8ba8c7bd60"
+    }
+   }
+  },
+  {
+   "fullUrl": "Observation/487158cf-8593-6aa9-92bb-6389e3135212",
+   "resource": {
+    "resourceType": "Observation",
+    "status": "final",
+    "code": {
+     "coding": [
+      {
+       "system": "http://loinc.org",
+       "code": "4548-4",
+       "display": "Hemoglobin A1c/Hemoglobin.total in Blood"
+      }
+     ],
+     "text": "Hemoglobin A1c/Hemoglobin.total in Blood"
+    },
+    "category": [
+     {
+      "coding": [
+       {
+        "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+        "code": "laboratory",
+        "display": "laboratory"
+       }
+      ],
+      "text": "laboratory"
+     }
+    ],
+    "effectiveDateTime": "2022-09-01",
+    "valueQuantity": {
+     "value": 5.4,
+     "unit": "%"
+    },
+    "id": "487158cf-8593-6aa9-92bb-6389e3135212",
+    "subject": {
+     "reference": "Patient/8b09f72a-ec63-248b-d008-ca8ba8c7bd60"
+    }
+   }
+  },
+  {
+   "fullUrl": "Observation/602c356c-e0bc-6c05-1f81-a1db3e01cbc0",
+   "resource": {
+    "resourceType": "Observation",
+    "status": "final",
+    "code": {
+     "coding": [
+      {
+       "system": "http://loinc.org",
+       "code": "4548-4",
+       "display": "Hemoglobin A1c/Hemoglobin.total in Blood"
+      }
+     ],
+     "text": "Hemoglobin A1c/Hemoglobin.total in Blood"
+    },
+    "category": [
+     {
+      "coding": [
+       {
+        "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+        "code": "laboratory",
+        "display": "laboratory"
+       }
+      ],
+      "text": "laboratory"
+     }
+    ],
+    "effectiveDateTime": "2023-03-20",
+    "valueQuantity": {
+     "value": 5.5,
+     "unit": "%"
+    },
+    "id": "602c356c-e0bc-6c05-1f81-a1db3e01cbc0",
+    "subject": {
+     "reference": "Patient/8b09f72a-ec63-248b-d008-ca8ba8c7bd60"
+    }
+   }
+  },
+  {
+   "fullUrl": "Observation/a36c37f6-a1f2-5a31-5ad9-0596dac2b8d2",
+   "resource": {
+    "resourceType": "Observation",
+    "status": "final",
+    "code": {
+     "coding": [
+      {
+       "system": "http://loinc.org",
+       "code": "4548-4",
+       "display": "Hemoglobin A1c/Hemoglobin.total in Blood"
+      }
+     ],
+     "text": "Hemoglobin A1c/Hemoglobin.total in Blood"
+    },
+    "category": [
+     {
+      "coding": [
+       {
+        "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+        "code": "laboratory",
+        "display": "laboratory"
+       }
+      ],
+      "text": "laboratory"
+     }
+    ],
+    "effectiveDateTime": "2023-12-15",
+    "valueQuantity": {
+     "value": 5.4,
+     "unit": "%"
+    },
+    "id": "a36c37f6-a1f2-5a31-5ad9-0596dac2b8d2",
+    "subject": {
+     "reference": "Patient/8b09f72a-ec63-248b-d008-ca8ba8c7bd60"
+    }
+   }
+  },
+  {
+   "fullUrl": "Observation/1a272769-9428-b2c4-4637-9d24d3fbf33f",
+   "resource": {
+    "resourceType": "Observation",
+    "status": "final",
+    "code": {
+     "coding": [
+      {
+       "system": "http://loinc.org",
+       "code": "4548-4",
+       "display": "Hemoglobin A1c/Hemoglobin.total in Blood"
+      }
+     ],
+     "text": "Hemoglobin A1c/Hemoglobin.total in Blood"
+    },
+    "category": [
+     {
+      "coding": [
+       {
+        "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+        "code": "laboratory",
+        "display": "laboratory"
+       }
+      ],
+      "text": "laboratory"
+     }
+    ],
+    "effectiveDateTime": "2024-03-14",
+    "valueQuantity": {
+     "value": 5.5,
+     "unit": "%"
+    },
+    "id": "1a272769-9428-b2c4-4637-9d24d3fbf33f",
+    "subject": {
+     "reference": "Patient/8b09f72a-ec63-248b-d008-ca8ba8c7bd60"
+    }
+   }
+  },
+  {
+   "fullUrl": "Observation/377f3169-5926-122f-9691-d41a44fac061",
+   "resource": {
+    "resourceType": "Observation",
+    "status": "final",
+    "code": {
+     "coding": [
+      {
+       "system": "http://loinc.org",
+       "code": "4548-4",
+       "display": "Hemoglobin A1c/Hemoglobin.total in Blood"
+      }
+     ],
+     "text": "Hemoglobin A1c/Hemoglobin.total in Blood"
+    },
+    "category": [
+     {
+      "coding": [
+       {
+        "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+        "code": "laboratory",
+        "display": "laboratory"
+       }
+      ],
+      "text": "laboratory"
+     }
+    ],
+    "effectiveDateTime": "2024-07-12",
+    "valueQuantity": {
+     "value": 5.4,
+     "unit": "%"
+    },
+    "id": "377f3169-5926-122f-9691-d41a44fac061",
+    "subject": {
+     "reference": "Patient/8b09f72a-ec63-248b-d008-ca8ba8c7bd60"
+    }
+   }
+  },
+  {
+   "fullUrl": "Observation/bc8567f1-8bd1-a8a4-7a76-0764e2dede8b",
+   "resource": {
+    "resourceType": "Observation",
+    "status": "final",
+    "code": {
+     "coding": [
+      {
+       "system": "http://loinc.org",
+       "code": "4548-4",
+       "display": "Hemoglobin A1c/Hemoglobin.total in Blood"
+      }
+     ],
+     "text": "Hemoglobin A1c/Hemoglobin.total in Blood"
+    },
+    "category": [
+     {
+      "coding": [
+       {
+        "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+        "code": "laboratory",
+        "display": "laboratory"
+       }
+      ],
+      "text": "laboratory"
+     }
+    ],
+    "effectiveDateTime": "2024-10-30",
+    "valueQuantity": {
+     "value": 5.4,
+     "unit": "%"
+    },
+    "id": "bc8567f1-8bd1-a8a4-7a76-0764e2dede8b",
+    "subject": {
+     "reference": "Patient/8b09f72a-ec63-248b-d008-ca8ba8c7bd60"
+    }
+   }
+  },
+  {
+   "fullUrl": "Observation/0392ce95-07e1-4361-674b-408796d0e742",
+   "resource": {
+    "resourceType": "Observation",
+    "status": "final",
+    "code": {
+     "coding": [
+      {
+       "system": "http://loinc.org",
+       "code": "2160-0",
+       "display": "Creatinine [Mass/volume] in Serum or Plasma"
+      }
+     ],
+     "text": "Creatinine [Mass/volume] in Serum or Plasma"
+    },
+    "category": [
+     {
+      "coding": [
+       {
+        "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+        "code": "laboratory",
+        "display": "laboratory"
+       }
+      ],
+      "text": "laboratory"
+     }
+    ],
+    "effectiveDateTime": "2022-02-13",
+    "valueQuantity": {
+     "value": 0.9,
+     "unit": "mg/dL"
+    },
+    "id": "0392ce95-07e1-4361-674b-408796d0e742",
+    "subject": {
+     "reference": "Patient/8b09f72a-ec63-248b-d008-ca8ba8c7bd60"
+    }
+   }
+  },
+  {
+   "fullUrl": "Observation/114e9b6b-407f-9ddc-3115-1127233cdef0",
+   "resource": {
+    "resourceType": "Observation",
+    "status": "final",
+    "code": {
+     "coding": [
+      {
+       "system": "http://loinc.org",
+       "code": "2160-0",
+       "display": "Creatinine [Mass/volume] in Serum or Plasma"
+      }
+     ],
+     "text": "Creatinine [Mass/volume] in Serum or Plasma"
+    },
+    "category": [
+     {
+      "coding": [
+       {
+        "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+        "code": "laboratory",
+        "display": "laboratory"
+       }
+      ],
+      "text": "laboratory"
+     }
+    ],
+    "effectiveDateTime": "2022-09-01",
+    "valueQuantity": {
+     "value": 0.9,
+     "unit": "mg/dL"
+    },
+    "id": "114e9b6b-407f-9ddc-3115-1127233cdef0",
+    "subject": {
+     "reference": "Patient/8b09f72a-ec63-248b-d008-ca8ba8c7bd60"
+    }
+   }
+  },
+  {
+   "fullUrl": "Observation/44eaa620-956b-e33a-b04b-70e9c35a67ec",
+   "resource": {
+    "resourceType": "Observation",
+    "status": "final",
+    "code": {
+     "coding": [
+      {
+       "system": "http://loinc.org",
+       "code": "2160-0",
+       "display": "Creatinine [Mass/volume] in Serum or Plasma"
+      }
+     ],
+     "text": "Creatinine [Mass/volume] in Serum or Plasma"
+    },
+    "category": [
+     {
+      "coding": [
+       {
+        "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+        "code": "laboratory",
+        "display": "laboratory"
+       }
+      ],
+      "text": "laboratory"
+     }
+    ],
+    "effectiveDateTime": "2023-03-20",
+    "valueQuantity": {
+     "value": 0.9,
+     "unit": "mg/dL"
+    },
+    "id": "44eaa620-956b-e33a-b04b-70e9c35a67ec",
+    "subject": {
+     "reference": "Patient/8b09f72a-ec63-248b-d008-ca8ba8c7bd60"
+    }
+   }
+  },
+  {
+   "fullUrl": "Observation/92c9ae89-68b4-2a10-51ba-ee899f7cb925",
+   "resource": {
+    "resourceType": "Observation",
+    "status": "final",
+    "code": {
+     "coding": [
+      {
+       "system": "http://loinc.org",
+       "code": "2160-0",
+       "display": "Creatinine [Mass/volume] in Serum or Plasma"
+      }
+     ],
+     "text": "Creatinine [Mass/volume] in Serum or Plasma"
+    },
+    "category": [
+     {
+      "coding": [
+       {
+        "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+        "code": "laboratory",
+        "display": "laboratory"
+       }
+      ],
+      "text": "laboratory"
+     }
+    ],
+    "effectiveDateTime": "2023-12-15",
+    "valueQuantity": {
+     "value": 0.9,
+     "unit": "mg/dL"
+    },
+    "id": "92c9ae89-68b4-2a10-51ba-ee899f7cb925",
+    "subject": {
+     "reference": "Patient/8b09f72a-ec63-248b-d008-ca8ba8c7bd60"
+    }
+   }
+  },
+  {
+   "fullUrl": "Observation/23d5207b-4fc3-ffdc-123b-f01f023f7bda",
+   "resource": {
+    "resourceType": "Observation",
+    "status": "final",
+    "code": {
+     "coding": [
+      {
+       "system": "http://loinc.org",
+       "code": "2160-0",
+       "display": "Creatinine [Mass/volume] in Serum or Plasma"
+      }
+     ],
+     "text": "Creatinine [Mass/volume] in Serum or Plasma"
+    },
+    "category": [
+     {
+      "coding": [
+       {
+        "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+        "code": "laboratory",
+        "display": "laboratory"
+       }
+      ],
+      "text": "laboratory"
+     }
+    ],
+    "effectiveDateTime": "2024-03-14",
+    "valueQuantity": {
+     "value": 1.0,
+     "unit": "mg/dL"
+    },
+    "id": "23d5207b-4fc3-ffdc-123b-f01f023f7bda",
+    "subject": {
+     "reference": "Patient/8b09f72a-ec63-248b-d008-ca8ba8c7bd60"
+    }
+   }
+  },
+  {
+   "fullUrl": "Observation/b50e295f-d2db-fce8-f585-904967f38fde",
+   "resource": {
+    "resourceType": "Observation",
+    "status": "final",
+    "code": {
+     "coding": [
+      {
+       "system": "http://loinc.org",
+       "code": "2160-0",
+       "display": "Creatinine [Mass/volume] in Serum or Plasma"
+      }
+     ],
+     "text": "Creatinine [Mass/volume] in Serum or Plasma"
+    },
+    "category": [
+     {
+      "coding": [
+       {
+        "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+        "code": "laboratory",
+        "display": "laboratory"
+       }
+      ],
+      "text": "laboratory"
+     }
+    ],
+    "effectiveDateTime": "2024-07-12",
+    "valueQuantity": {
+     "value": 1.0,
+     "unit": "mg/dL"
+    },
+    "id": "b50e295f-d2db-fce8-f585-904967f38fde",
+    "subject": {
+     "reference": "Patient/8b09f72a-ec63-248b-d008-ca8ba8c7bd60"
+    }
+   }
+  },
+  {
+   "fullUrl": "Observation/17aadcca-7340-0752-bdf4-7fe1f7f9ab68",
+   "resource": {
+    "resourceType": "Observation",
+    "status": "final",
+    "code": {
+     "coding": [
+      {
+       "system": "http://loinc.org",
+       "code": "2160-0",
+       "display": "Creatinine [Mass/volume] in Serum or Plasma"
+      }
+     ],
+     "text": "Creatinine [Mass/volume] in Serum or Plasma"
+    },
+    "category": [
+     {
+      "coding": [
+       {
+        "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+        "code": "laboratory",
+        "display": "laboratory"
+       }
+      ],
+      "text": "laboratory"
+     }
+    ],
+    "effectiveDateTime": "2024-10-30",
+    "valueQuantity": {
+     "value": 1.0,
+     "unit": "mg/dL"
+    },
+    "id": "17aadcca-7340-0752-bdf4-7fe1f7f9ab68",
+    "subject": {
+     "reference": "Patient/8b09f72a-ec63-248b-d008-ca8ba8c7bd60"
+    }
+   }
+  },
+  {
+   "fullUrl": "Observation/19be3fb8-0161-d491-eb1b-7eddeeabc65c",
+   "resource": {
+    "resourceType": "Observation",
+    "status": "final",
+    "code": {
+     "coding": [
+      {
+       "system": "http://loinc.org",
+       "code": "33914-3",
+       "display": "Glomerular filtration rate/1.73 sq M.predicted"
+      }
+     ],
+     "text": "Glomerular filtration rate/1.73 sq M.predicted"
+    },
+    "category": [
+     {
+      "coding": [
+       {
+        "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+        "code": "laboratory",
+        "display": "laboratory"
+       }
+      ],
+      "text": "laboratory"
+     }
+    ],
+    "effectiveDateTime": "2022-02-13",
+    "valueQuantity": {
+     "value": 83.3,
+     "unit": "mL/min/{1.73_m2}"
+    },
+    "id": "19be3fb8-0161-d491-eb1b-7eddeeabc65c",
+    "subject": {
+     "reference": "Patient/8b09f72a-ec63-248b-d008-ca8ba8c7bd60"
+    }
+   }
+  },
+  {
+   "fullUrl": "Observation/5e34355b-4f88-b069-57aa-1052eebd7408",
+   "resource": {
+    "resourceType": "Observation",
+    "status": "final",
+    "code": {
+     "coding": [
+      {
+       "system": "http://loinc.org",
+       "code": "33914-3",
+       "display": "Glomerular filtration rate/1.73 sq M.predicted"
+      }
+     ],
+     "text": "Glomerular filtration rate/1.73 sq M.predicted"
+    },
+    "category": [
+     {
+      "coding": [
+       {
+        "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+        "code": "laboratory",
+        "display": "laboratory"
+       }
+      ],
+      "text": "laboratory"
+     }
+    ],
+    "effectiveDateTime": "2022-09-01",
+    "valueQuantity": {
+     "value": 83.6,
+     "unit": "mL/min/{1.73_m2}"
+    },
+    "id": "5e34355b-4f88-b069-57aa-1052eebd7408",
+    "subject": {
+     "reference": "Patient/8b09f72a-ec63-248b-d008-ca8ba8c7bd60"
+    }
+   }
+  },
+  {
+   "fullUrl": "Observation/4db2a23c-9175-1dfc-cec1-44a784ef7498",
+   "resource": {
+    "resourceType": "Observation",
+    "status": "final",
+    "code": {
+     "coding": [
+      {
+       "system": "http://loinc.org",
+       "code": "33914-3",
+       "display": "Glomerular filtration rate/1.73 sq M.predicted"
+      }
+     ],
+     "text": "Glomerular filtration rate/1.73 sq M.predicted"
+    },
+    "category": [
+     {
+      "coding": [
+       {
+        "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+        "code": "laboratory",
+        "display": "laboratory"
+       }
+      ],
+      "text": "laboratory"
+     }
+    ],
+    "effectiveDateTime": "2023-03-20",
+    "valueQuantity": {
+     "value": 82.3,
+     "unit": "mL/min/{1.73_m2}"
+    },
+    "id": "4db2a23c-9175-1dfc-cec1-44a784ef7498",
+    "subject": {
+     "reference": "Patient/8b09f72a-ec63-248b-d008-ca8ba8c7bd60"
+    }
+   }
+  },
+  {
+   "fullUrl": "Observation/24d0e486-ac32-eafc-a7b8-31a929c58619",
+   "resource": {
+    "resourceType": "Observation",
+    "status": "final",
+    "code": {
+     "coding": [
+      {
+       "system": "http://loinc.org",
+       "code": "33914-3",
+       "display": "Glomerular filtration rate/1.73 sq M.predicted"
+      }
+     ],
+     "text": "Glomerular filtration rate/1.73 sq M.predicted"
+    },
+    "category": [
+     {
+      "coding": [
+       {
+        "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+        "code": "laboratory",
+        "display": "laboratory"
+       }
+      ],
+      "text": "laboratory"
+     }
+    ],
+    "effectiveDateTime": "2023-12-15",
+    "valueQuantity": {
+     "value": 84.8,
+     "unit": "mL/min/{1.73_m2}"
+    },
+    "id": "24d0e486-ac32-eafc-a7b8-31a929c58619",
+    "subject": {
+     "reference": "Patient/8b09f72a-ec63-248b-d008-ca8ba8c7bd60"
+    }
+   }
+  },
+  {
+   "fullUrl": "Observation/2e61e4bf-a03b-91fc-6322-599756d5ad07",
+   "resource": {
+    "resourceType": "Observation",
+    "status": "final",
+    "code": {
+     "coding": [
+      {
+       "system": "http://loinc.org",
+       "code": "33914-3",
+       "display": "Glomerular filtration rate/1.73 sq M.predicted"
+      }
+     ],
+     "text": "Glomerular filtration rate/1.73 sq M.predicted"
+    },
+    "category": [
+     {
+      "coding": [
+       {
+        "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+        "code": "laboratory",
+        "display": "laboratory"
+       }
+      ],
+      "text": "laboratory"
+     }
+    ],
+    "effectiveDateTime": "2024-03-14",
+    "valueQuantity": {
+     "value": 86.0,
+     "unit": "mL/min/{1.73_m2}"
+    },
+    "id": "2e61e4bf-a03b-91fc-6322-599756d5ad07",
+    "subject": {
+     "reference": "Patient/8b09f72a-ec63-248b-d008-ca8ba8c7bd60"
+    }
+   }
+  },
+  {
+   "fullUrl": "Observation/91101485-ed2c-4a94-1851-0e04cb950972",
+   "resource": {
+    "resourceType": "Observation",
+    "status": "final",
+    "code": {
+     "coding": [
+      {
+       "system": "http://loinc.org",
+       "code": "33914-3",
+       "display": "Glomerular filtration rate/1.73 sq M.predicted"
+      }
+     ],
+     "text": "Glomerular filtration rate/1.73 sq M.predicted"
+    },
+    "category": [
+     {
+      "coding": [
+       {
+        "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+        "code": "laboratory",
+        "display": "laboratory"
+       }
+      ],
+      "text": "laboratory"
+     }
+    ],
+    "effectiveDateTime": "2024-07-12",
+    "valueQuantity": {
+     "value": 84.3,
+     "unit": "mL/min/{1.73_m2}"
+    },
+    "id": "91101485-ed2c-4a94-1851-0e04cb950972",
+    "subject": {
+     "reference": "Patient/8b09f72a-ec63-248b-d008-ca8ba8c7bd60"
+    }
+   }
+  },
+  {
+   "fullUrl": "Observation/91bc135b-5bbd-4d1d-c607-a6e97dd6cd08",
+   "resource": {
+    "resourceType": "Observation",
+    "status": "final",
+    "code": {
+     "coding": [
+      {
+       "system": "http://loinc.org",
+       "code": "33914-3",
+       "display": "Glomerular filtration rate/1.73 sq M.predicted"
+      }
+     ],
+     "text": "Glomerular filtration rate/1.73 sq M.predicted"
+    },
+    "category": [
+     {
+      "coding": [
+       {
+        "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+        "code": "laboratory",
+        "display": "laboratory"
+       }
+      ],
+      "text": "laboratory"
+     }
+    ],
+    "effectiveDateTime": "2024-10-30",
+    "valueQuantity": {
+     "value": 81.5,
+     "unit": "mL/min/{1.73_m2}"
+    },
+    "id": "91bc135b-5bbd-4d1d-c607-a6e97dd6cd08",
+    "subject": {
+     "reference": "Patient/8b09f72a-ec63-248b-d008-ca8ba8c7bd60"
+    }
+   }
+  },
+  {
+   "fullUrl": "Observation/ff89fcc0-e310-48de-2ea3-ba025b622f41",
+   "resource": {
+    "resourceType": "Observation",
+    "status": "final",
+    "code": {
+     "coding": [
+      {
+       "system": "http://loinc.org",
+       "code": "18262-6",
+       "display": "Cholesterol in LDL [Mass/volume] in Serum or Plasma by Direct assay"
+      }
+     ],
+     "text": "Cholesterol in LDL [Mass/volume] in Serum or Plasma by Direct assay"
+    },
+    "category": [
+     {
+      "coding": [
+       {
+        "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+        "code": "laboratory",
+        "display": "laboratory"
+       }
+      ],
+      "text": "laboratory"
+     }
+    ],
+    "effectiveDateTime": "2022-02-13",
+    "valueQuantity": {
+     "value": 102.3,
+     "unit": "mg/dL"
+    },
+    "id": "ff89fcc0-e310-48de-2ea3-ba025b622f41",
+    "subject": {
+     "reference": "Patient/8b09f72a-ec63-248b-d008-ca8ba8c7bd60"
+    }
+   }
+  },
+  {
+   "fullUrl": "Observation/bb4d8e2c-57b7-4b68-2675-cac2b602c96e",
+   "resource": {
+    "resourceType": "Observation",
+    "status": "final",
+    "code": {
+     "coding": [
+      {
+       "system": "http://loinc.org",
+       "code": "18262-6",
+       "display": "Cholesterol in LDL [Mass/volume] in Serum or Plasma by Direct assay"
+      }
+     ],
+     "text": "Cholesterol in LDL [Mass/volume] in Serum or Plasma by Direct assay"
+    },
+    "category": [
+     {
+      "coding": [
+       {
+        "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+        "code": "laboratory",
+        "display": "laboratory"
+       }
+      ],
+      "text": "laboratory"
+     }
+    ],
+    "effectiveDateTime": "2022-09-01",
+    "valueQuantity": {
+     "value": 100.3,
+     "unit": "mg/dL"
+    },
+    "id": "bb4d8e2c-57b7-4b68-2675-cac2b602c96e",
+    "subject": {
+     "reference": "Patient/8b09f72a-ec63-248b-d008-ca8ba8c7bd60"
+    }
+   }
+  },
+  {
+   "fullUrl": "Observation/bc963a58-4968-ba3f-2fe9-2ae970c0b3bd",
+   "resource": {
+    "resourceType": "Observation",
+    "status": "final",
+    "code": {
+     "coding": [
+      {
+       "system": "http://loinc.org",
+       "code": "18262-6",
+       "display": "Cholesterol in LDL [Mass/volume] in Serum or Plasma by Direct assay"
+      }
+     ],
+     "text": "Cholesterol in LDL [Mass/volume] in Serum or Plasma by Direct assay"
+    },
+    "category": [
+     {
+      "coding": [
+       {
+        "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+        "code": "laboratory",
+        "display": "laboratory"
+       }
+      ],
+      "text": "laboratory"
+     }
+    ],
+    "effectiveDateTime": "2023-03-20",
+    "valueQuantity": {
+     "value": 106.4,
+     "unit": "mg/dL"
+    },
+    "id": "bc963a58-4968-ba3f-2fe9-2ae970c0b3bd",
+    "subject": {
+     "reference": "Patient/8b09f72a-ec63-248b-d008-ca8ba8c7bd60"
+    }
+   }
+  },
+  {
+   "fullUrl": "Observation/2e95a7dd-df10-6290-31e9-93927a898a4d",
+   "resource": {
+    "resourceType": "Observation",
+    "status": "final",
+    "code": {
+     "coding": [
+      {
+       "system": "http://loinc.org",
+       "code": "18262-6",
+       "display": "Cholesterol in LDL [Mass/volume] in Serum or Plasma by Direct assay"
+      }
+     ],
+     "text": "Cholesterol in LDL [Mass/volume] in Serum or Plasma by Direct assay"
+    },
+    "category": [
+     {
+      "coding": [
+       {
+        "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+        "code": "laboratory",
+        "display": "laboratory"
+       }
+      ],
+      "text": "laboratory"
+     }
+    ],
+    "effectiveDateTime": "2023-12-15",
+    "valueQuantity": {
+     "value": 107.7,
+     "unit": "mg/dL"
+    },
+    "id": "2e95a7dd-df10-6290-31e9-93927a898a4d",
+    "subject": {
+     "reference": "Patient/8b09f72a-ec63-248b-d008-ca8ba8c7bd60"
+    }
+   }
+  },
+  {
+   "fullUrl": "Observation/f8b784af-0aad-f7f7-9511-95ca18ccfe02",
+   "resource": {
+    "resourceType": "Observation",
+    "status": "final",
+    "code": {
+     "coding": [
+      {
+       "system": "http://loinc.org",
+       "code": "18262-6",
+       "display": "Cholesterol in LDL [Mass/volume] in Serum or Plasma by Direct assay"
+      }
+     ],
+     "text": "Cholesterol in LDL [Mass/volume] in Serum or Plasma by Direct assay"
+    },
+    "category": [
+     {
+      "coding": [
+       {
+        "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+        "code": "laboratory",
+        "display": "laboratory"
+       }
+      ],
+      "text": "laboratory"
+     }
+    ],
+    "effectiveDateTime": "2024-03-14",
+    "valueQuantity": {
+     "value": 104.3,
+     "unit": "mg/dL"
+    },
+    "id": "f8b784af-0aad-f7f7-9511-95ca18ccfe02",
+    "subject": {
+     "reference": "Patient/8b09f72a-ec63-248b-d008-ca8ba8c7bd60"
+    }
+   }
+  },
+  {
+   "fullUrl": "Observation/f9f59c43-4e59-47da-ec5a-5e97db3f3450",
+   "resource": {
+    "resourceType": "Observation",
+    "status": "final",
+    "code": {
+     "coding": [
+      {
+       "system": "http://loinc.org",
+       "code": "18262-6",
+       "display": "Cholesterol in LDL [Mass/volume] in Serum or Plasma by Direct assay"
+      }
+     ],
+     "text": "Cholesterol in LDL [Mass/volume] in Serum or Plasma by Direct assay"
+    },
+    "category": [
+     {
+      "coding": [
+       {
+        "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+        "code": "laboratory",
+        "display": "laboratory"
+       }
+      ],
+      "text": "laboratory"
+     }
+    ],
+    "effectiveDateTime": "2024-07-12",
+    "valueQuantity": {
+     "value": 107.7,
+     "unit": "mg/dL"
+    },
+    "id": "f9f59c43-4e59-47da-ec5a-5e97db3f3450",
+    "subject": {
+     "reference": "Patient/8b09f72a-ec63-248b-d008-ca8ba8c7bd60"
+    }
+   }
+  },
+  {
+   "fullUrl": "Observation/341a1b7e-6218-42e8-132e-b0b707b46648",
+   "resource": {
+    "resourceType": "Observation",
+    "status": "final",
+    "code": {
+     "coding": [
+      {
+       "system": "http://loinc.org",
+       "code": "18262-6",
+       "display": "Cholesterol in LDL [Mass/volume] in Serum or Plasma by Direct assay"
+      }
+     ],
+     "text": "Cholesterol in LDL [Mass/volume] in Serum or Plasma by Direct assay"
+    },
+    "category": [
+     {
+      "coding": [
+       {
+        "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+        "code": "laboratory",
+        "display": "laboratory"
+       }
+      ],
+      "text": "laboratory"
+     }
+    ],
+    "effectiveDateTime": "2024-10-30",
+    "valueQuantity": {
+     "value": 102.3,
+     "unit": "mg/dL"
+    },
+    "id": "341a1b7e-6218-42e8-132e-b0b707b46648",
+    "subject": {
+     "reference": "Patient/8b09f72a-ec63-248b-d008-ca8ba8c7bd60"
+    }
+   }
+  },
+  {
+   "fullUrl": "Observation/e289b1c0-4c0d-cfff-55f4-48c483c7822a",
+   "resource": {
+    "resourceType": "Observation",
+    "status": "final",
+    "code": {
+     "coding": [
+      {
+       "system": "http://loinc.org",
+       "code": "2823-3",
+       "display": "Potassium [Moles/volume] in Serum or Plasma"
+      }
+     ],
+     "text": "Potassium [Moles/volume] in Serum or Plasma"
+    },
+    "category": [
+     {
+      "coding": [
+       {
+        "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+        "code": "laboratory",
+        "display": "laboratory"
+       }
+      ],
+      "text": "laboratory"
+     }
+    ],
+    "effectiveDateTime": "2022-02-13",
+    "valueQuantity": {
+     "value": 4.2,
+     "unit": "mmol/L"
+    },
+    "id": "e289b1c0-4c0d-cfff-55f4-48c483c7822a",
+    "subject": {
+     "reference": "Patient/8b09f72a-ec63-248b-d008-ca8ba8c7bd60"
+    }
+   }
+  },
+  {
+   "fullUrl": "Observation/6286586f-c257-c2b3-8742-700501513d1f",
+   "resource": {
+    "resourceType": "Observation",
+    "status": "final",
+    "code": {
+     "coding": [
+      {
+       "system": "http://loinc.org",
+       "code": "2823-3",
+       "display": "Potassium [Moles/volume] in Serum or Plasma"
+      }
+     ],
+     "text": "Potassium [Moles/volume] in Serum or Plasma"
+    },
+    "category": [
+     {
+      "coding": [
+       {
+        "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+        "code": "laboratory",
+        "display": "laboratory"
+       }
+      ],
+      "text": "laboratory"
+     }
+    ],
+    "effectiveDateTime": "2022-09-01",
+    "valueQuantity": {
+     "value": 4.3,
+     "unit": "mmol/L"
+    },
+    "id": "6286586f-c257-c2b3-8742-700501513d1f",
+    "subject": {
+     "reference": "Patient/8b09f72a-ec63-248b-d008-ca8ba8c7bd60"
+    }
+   }
+  },
+  {
+   "fullUrl": "Observation/239e1f4b-3d3f-2a78-777e-63487c7c23d7",
+   "resource": {
+    "resourceType": "Observation",
+    "status": "final",
+    "code": {
+     "coding": [
+      {
+       "system": "http://loinc.org",
+       "code": "2823-3",
+       "display": "Potassium [Moles/volume] in Serum or Plasma"
+      }
+     ],
+     "text": "Potassium [Moles/volume] in Serum or Plasma"
+    },
+    "category": [
+     {
+      "coding": [
+       {
+        "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+        "code": "laboratory",
+        "display": "laboratory"
+       }
+      ],
+      "text": "laboratory"
+     }
+    ],
+    "effectiveDateTime": "2023-03-20",
+    "valueQuantity": {
+     "value": 4.2,
+     "unit": "mmol/L"
+    },
+    "id": "239e1f4b-3d3f-2a78-777e-63487c7c23d7",
+    "subject": {
+     "reference": "Patient/8b09f72a-ec63-248b-d008-ca8ba8c7bd60"
+    }
+   }
+  },
+  {
+   "fullUrl": "Observation/37dfe99b-6e2d-e6c0-3283-4bbfc8a25fff",
+   "resource": {
+    "resourceType": "Observation",
+    "status": "final",
+    "code": {
+     "coding": [
+      {
+       "system": "http://loinc.org",
+       "code": "2823-3",
+       "display": "Potassium [Moles/volume] in Serum or Plasma"
+      }
+     ],
+     "text": "Potassium [Moles/volume] in Serum or Plasma"
+    },
+    "category": [
+     {
+      "coding": [
+       {
+        "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+        "code": "laboratory",
+        "display": "laboratory"
+       }
+      ],
+      "text": "laboratory"
+     }
+    ],
+    "effectiveDateTime": "2023-12-15",
+    "valueQuantity": {
+     "value": 4.2,
+     "unit": "mmol/L"
+    },
+    "id": "37dfe99b-6e2d-e6c0-3283-4bbfc8a25fff",
+    "subject": {
+     "reference": "Patient/8b09f72a-ec63-248b-d008-ca8ba8c7bd60"
+    }
+   }
+  },
+  {
+   "fullUrl": "Observation/16f0c5a5-dce0-9f31-18c5-14029105d33c",
+   "resource": {
+    "resourceType": "Observation",
+    "status": "final",
+    "code": {
+     "coding": [
+      {
+       "system": "http://loinc.org",
+       "code": "2823-3",
+       "display": "Potassium [Moles/volume] in Serum or Plasma"
+      }
+     ],
+     "text": "Potassium [Moles/volume] in Serum or Plasma"
+    },
+    "category": [
+     {
+      "coding": [
+       {
+        "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+        "code": "laboratory",
+        "display": "laboratory"
+       }
+      ],
+      "text": "laboratory"
+     }
+    ],
+    "effectiveDateTime": "2024-03-14",
+    "valueQuantity": {
+     "value": 4.2,
+     "unit": "mmol/L"
+    },
+    "id": "16f0c5a5-dce0-9f31-18c5-14029105d33c",
+    "subject": {
+     "reference": "Patient/8b09f72a-ec63-248b-d008-ca8ba8c7bd60"
+    }
+   }
+  },
+  {
+   "fullUrl": "Observation/e34e15b5-da5f-1de0-52b3-70c6076a9a3c",
+   "resource": {
+    "resourceType": "Observation",
+    "status": "final",
+    "code": {
+     "coding": [
+      {
+       "system": "http://loinc.org",
+       "code": "2823-3",
+       "display": "Potassium [Moles/volume] in Serum or Plasma"
+      }
+     ],
+     "text": "Potassium [Moles/volume] in Serum or Plasma"
+    },
+    "category": [
+     {
+      "coding": [
+       {
+        "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+        "code": "laboratory",
+        "display": "laboratory"
+       }
+      ],
+      "text": "laboratory"
+     }
+    ],
+    "effectiveDateTime": "2024-07-12",
+    "valueQuantity": {
+     "value": 4.2,
+     "unit": "mmol/L"
+    },
+    "id": "e34e15b5-da5f-1de0-52b3-70c6076a9a3c",
+    "subject": {
+     "reference": "Patient/8b09f72a-ec63-248b-d008-ca8ba8c7bd60"
+    }
+   }
+  },
+  {
+   "fullUrl": "Observation/fbd51f43-f755-6141-45df-35736af07bc1",
+   "resource": {
+    "resourceType": "Observation",
+    "status": "final",
+    "code": {
+     "coding": [
+      {
+       "system": "http://loinc.org",
+       "code": "2823-3",
+       "display": "Potassium [Moles/volume] in Serum or Plasma"
+      }
+     ],
+     "text": "Potassium [Moles/volume] in Serum or Plasma"
+    },
+    "category": [
+     {
+      "coding": [
+       {
+        "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+        "code": "laboratory",
+        "display": "laboratory"
+       }
+      ],
+      "text": "laboratory"
+     }
+    ],
+    "effectiveDateTime": "2024-10-30",
+    "valueQuantity": {
+     "value": 4.3,
+     "unit": "mmol/L"
+    },
+    "id": "fbd51f43-f755-6141-45df-35736af07bc1",
+    "subject": {
+     "reference": "Patient/8b09f72a-ec63-248b-d008-ca8ba8c7bd60"
+    }
+   }
+  },
+  {
+   "fullUrl": "Observation/f8baa7e6-577b-6f86-62b7-5ffd8e839e56",
+   "resource": {
+    "resourceType": "Observation",
+    "status": "final",
+    "code": {
+     "coding": [
+      {
+       "system": "http://loinc.org",
+       "code": "2823-3",
+       "display": "Potassium [Moles/volume] in Serum or Plasma"
+      }
+     ],
+     "text": "Potassium [Moles/volume] in Serum or Plasma"
+    },
+    "category": [
+     {
+      "coding": [
+       {
+        "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+        "code": "laboratory",
+        "display": "laboratory"
+       }
+      ],
+      "text": "laboratory"
+     }
+    ],
+    "effectiveDateTime": "2024-10-30",
+    "valueQuantity": {
+     "value": 4.3,
+     "unit": "mmol/L"
+    },
+    "id": "f8baa7e6-577b-6f86-62b7-5ffd8e839e56",
+    "subject": {
+     "reference": "Patient/8b09f72a-ec63-248b-d008-ca8ba8c7bd60"
+    }
+   }
+  },
+  {
+   "fullUrl": "Observation/54674f92-6e77-db85-f536-b881bc935541",
+   "resource": {
+    "resourceType": "Observation",
+    "status": "final",
+    "code": {
+     "coding": [
+      {
+       "system": "http://loinc.org",
+       "code": "8480-6",
+       "display": "Systolic blood pressure"
+      }
+     ],
+     "text": "Systolic blood pressure"
+    },
+    "category": [
+     {
+      "coding": [
+       {
+        "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+        "code": "vital-signs",
+        "display": "vital-signs"
+       }
+      ],
+      "text": "vital-signs"
+     }
+    ],
+    "effectiveDateTime": "2022-02-13",
+    "valueQuantity": {
+     "value": 122.7,
+     "unit": "mm[Hg]"
+    },
+    "id": "54674f92-6e77-db85-f536-b881bc935541",
+    "subject": {
+     "reference": "Patient/8b09f72a-ec63-248b-d008-ca8ba8c7bd60"
+    }
+   }
+  },
+  {
+   "fullUrl": "Observation/57b8e84a-3307-61c0-17b2-368618b7be3d",
+   "resource": {
+    "resourceType": "Observation",
+    "status": "final",
+    "code": {
+     "coding": [
+      {
+       "system": "http://loinc.org",
+       "code": "8480-6",
+       "display": "Systolic blood pressure"
+      }
+     ],
+     "text": "Systolic blood pressure"
+    },
+    "category": [
+     {
+      "coding": [
+       {
+        "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+        "code": "vital-signs",
+        "display": "vital-signs"
+       }
+      ],
+      "text": "vital-signs"
+     }
+    ],
+    "effectiveDateTime": "2022-09-01",
+    "valueQuantity": {
+     "value": 124.0,
+     "unit": "mm[Hg]"
+    },
+    "id": "57b8e84a-3307-61c0-17b2-368618b7be3d",
+    "subject": {
+     "reference": "Patient/8b09f72a-ec63-248b-d008-ca8ba8c7bd60"
+    }
+   }
+  },
+  {
+   "fullUrl": "Observation/c4fe0db1-7f1c-2a27-38f1-66e7cf0261e9",
+   "resource": {
+    "resourceType": "Observation",
+    "status": "final",
+    "code": {
+     "coding": [
+      {
+       "system": "http://loinc.org",
+       "code": "8480-6",
+       "display": "Systolic blood pressure"
+      }
+     ],
+     "text": "Systolic blood pressure"
+    },
+    "category": [
+     {
+      "coding": [
+       {
+        "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+        "code": "vital-signs",
+        "display": "vital-signs"
+       }
+      ],
+      "text": "vital-signs"
+     }
+    ],
+    "effectiveDateTime": "2023-03-20",
+    "valueQuantity": {
+     "value": 121.9,
+     "unit": "mm[Hg]"
+    },
+    "id": "c4fe0db1-7f1c-2a27-38f1-66e7cf0261e9",
+    "subject": {
+     "reference": "Patient/8b09f72a-ec63-248b-d008-ca8ba8c7bd60"
+    }
+   }
+  },
+  {
+   "fullUrl": "Observation/1dbc8347-17d7-7455-c911-406969379814",
+   "resource": {
+    "resourceType": "Observation",
+    "status": "final",
+    "code": {
+     "coding": [
+      {
+       "system": "http://loinc.org",
+       "code": "8480-6",
+       "display": "Systolic blood pressure"
+      }
+     ],
+     "text": "Systolic blood pressure"
+    },
+    "category": [
+     {
+      "coding": [
+       {
+        "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+        "code": "vital-signs",
+        "display": "vital-signs"
+       }
+      ],
+      "text": "vital-signs"
+     }
+    ],
+    "effectiveDateTime": "2023-12-15",
+    "valueQuantity": {
+     "value": 122.8,
+     "unit": "mm[Hg]"
+    },
+    "id": "1dbc8347-17d7-7455-c911-406969379814",
+    "subject": {
+     "reference": "Patient/8b09f72a-ec63-248b-d008-ca8ba8c7bd60"
+    }
+   }
+  },
+  {
+   "fullUrl": "Observation/a4203bc2-a5ee-0f0e-3690-39b48246ad9a",
+   "resource": {
+    "resourceType": "Observation",
+    "status": "final",
+    "code": {
+     "coding": [
+      {
+       "system": "http://loinc.org",
+       "code": "8480-6",
+       "display": "Systolic blood pressure"
+      }
+     ],
+     "text": "Systolic blood pressure"
+    },
+    "category": [
+     {
+      "coding": [
+       {
+        "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+        "code": "vital-signs",
+        "display": "vital-signs"
+       }
+      ],
+      "text": "vital-signs"
+     }
+    ],
+    "effectiveDateTime": "2024-03-14",
+    "valueQuantity": {
+     "value": 120.9,
+     "unit": "mm[Hg]"
+    },
+    "id": "a4203bc2-a5ee-0f0e-3690-39b48246ad9a",
+    "subject": {
+     "reference": "Patient/8b09f72a-ec63-248b-d008-ca8ba8c7bd60"
+    }
+   }
+  },
+  {
+   "fullUrl": "Observation/6cbb9457-3c39-2db7-8a9c-8b96b5b268de",
+   "resource": {
+    "resourceType": "Observation",
+    "status": "final",
+    "code": {
+     "coding": [
+      {
+       "system": "http://loinc.org",
+       "code": "8480-6",
+       "display": "Systolic blood pressure"
+      }
+     ],
+     "text": "Systolic blood pressure"
+    },
+    "category": [
+     {
+      "coding": [
+       {
+        "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+        "code": "vital-signs",
+        "display": "vital-signs"
+       }
+      ],
+      "text": "vital-signs"
+     }
+    ],
+    "effectiveDateTime": "2024-07-12",
+    "valueQuantity": {
+     "value": 120.6,
+     "unit": "mm[Hg]"
+    },
+    "id": "6cbb9457-3c39-2db7-8a9c-8b96b5b268de",
+    "subject": {
+     "reference": "Patient/8b09f72a-ec63-248b-d008-ca8ba8c7bd60"
+    }
+   }
+  },
+  {
+   "fullUrl": "Observation/c21d5123-2372-e2ce-bbfe-73a60a724f01",
+   "resource": {
+    "resourceType": "Observation",
+    "status": "final",
+    "code": {
+     "coding": [
+      {
+       "system": "http://loinc.org",
+       "code": "8480-6",
+       "display": "Systolic blood pressure"
+      }
+     ],
+     "text": "Systolic blood pressure"
+    },
+    "category": [
+     {
+      "coding": [
+       {
+        "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+        "code": "vital-signs",
+        "display": "vital-signs"
+       }
+      ],
+      "text": "vital-signs"
+     }
+    ],
+    "effectiveDateTime": "2024-10-30",
+    "valueQuantity": {
+     "value": 121.0,
+     "unit": "mm[Hg]"
+    },
+    "id": "c21d5123-2372-e2ce-bbfe-73a60a724f01",
+    "subject": {
+     "reference": "Patient/8b09f72a-ec63-248b-d008-ca8ba8c7bd60"
+    }
+   }
+  },
+  {
+   "fullUrl": "Encounter/fd31393d-3399-aaa8-2237-91b2e349566f",
+   "resource": {
+    "resourceType": "Encounter",
+    "status": "finished",
+    "class": {
+     "code": "AMB"
+    },
+    "type": [
+     {
+      "coding": [
+       {
+        "system": "http://snomed.info/sct",
+        "code": "185349003",
+        "display": "Encounter for check up (procedure)"
+       }
+      ],
+      "text": "Encounter for check up (procedure)"
+     }
+    ],
+    "period": {
+     "start": "2024-03-14",
+     "end": "2024-03-14"
+    },
+    "id": "fd31393d-3399-aaa8-2237-91b2e349566f",
+    "subject": {
+     "reference": "Patient/8b09f72a-ec63-248b-d008-ca8ba8c7bd60"
+    }
+   }
+  },
+  {
+   "fullUrl": "Encounter/5bac6f4a-d28e-6de9-a99c-b91aabcc75fe",
+   "resource": {
+    "resourceType": "Encounter",
+    "status": "finished",
+    "class": {
+     "code": "AMB"
+    },
+    "type": [
+     {
+      "coding": [
+       {
+        "system": "http://snomed.info/sct",
+        "code": "185349003",
+        "display": "Encounter for check up (procedure)"
+       }
+      ],
+      "text": "Encounter for check up (procedure)"
+     }
+    ],
+    "period": {
+     "start": "2024-07-12",
+     "end": "2024-07-12"
+    },
+    "id": "5bac6f4a-d28e-6de9-a99c-b91aabcc75fe",
+    "subject": {
+     "reference": "Patient/8b09f72a-ec63-248b-d008-ca8ba8c7bd60"
+    }
+   }
+  },
+  {
+   "fullUrl": "Encounter/a058fa9c-7b4e-912b-2bc5-f8340d03be9f",
+   "resource": {
+    "resourceType": "Encounter",
+    "status": "finished",
+    "class": {
+     "code": "AMB"
+    },
+    "type": [
+     {
+      "coding": [
+       {
+        "system": "http://snomed.info/sct",
+        "code": "185349003",
+        "display": "Encounter for check up (procedure)"
+       }
+      ],
+      "text": "Encounter for check up (procedure)"
+     }
+    ],
+    "period": {
+     "start": "2024-10-30",
+     "end": "2024-10-30"
+    },
+    "id": "a058fa9c-7b4e-912b-2bc5-f8340d03be9f",
+    "subject": {
+     "reference": "Patient/8b09f72a-ec63-248b-d008-ca8ba8c7bd60"
+    }
+   }
+  },
+  {
+   "fullUrl": "DocumentReference/4dba1c67-23a6-67f4-d756-578e97d28ded",
+   "resource": {
+    "resourceType": "DocumentReference",
+    "status": "current",
+    "date": "2024-10-30T10:00:00Z",
+    "type": {
+     "coding": [
+      {
+       "system": "http://loinc.org",
+       "code": "34117-2",
+       "display": "History and physical note"
+      }
+     ],
+     "text": "History and physical note"
+    },
+    "content": [
+     {
+      "attachment": {
+       "contentType": "text/plain",
+       "data": "Rm9sbG93LXVwIHZpc2l0LiBQYXRpZW50IHJlcG9ydHMgZmVlbGluZyBnZW5lcmFsbHkgd2VsbC4gQWN0aXZlIHByb2JsZW1zIHJldmlld2VkOiBoeXBlcmxpcGlkZW1pYSwgb3N0ZW9hcnRocml0aXMgb2Yga25lZS4gQmxvb2QgcHJlc3N1cmUgZGlzY3Vzc2VkLiBDb250aW51ZSBjdXJyZW50IG1lZGljYXRpb25zLiBSZXR1cm4gaW4gMyBtb250aHMu"
+      }
+     }
+    ],
+    "id": "4dba1c67-23a6-67f4-d756-578e97d28ded",
+    "subject": {
+     "reference": "Patient/8b09f72a-ec63-248b-d008-ca8ba8c7bd60"
+    }
+   }
+  },
+  {
+   "fullUrl": "DocumentReference/157d063a-9012-d166-5c57-2c1e5f0ce2ea",
+   "resource": {
+    "resourceType": "DocumentReference",
+    "status": "current",
+    "date": "2024-03-14T10:00:00Z",
+    "type": {
+     "coding": [
+      {
+       "system": "http://loinc.org",
+       "code": "34117-2",
+       "display": "History and physical note"
+      }
+     ],
+     "text": "History and physical note"
+    },
+    "content": [
+     {
+      "attachment": {
+       "contentType": "text/plain",
+       "data": "Um91dGluZSByZXZpZXcuIE5vIGFjdXRlIGNvbXBsYWludHMuIExhYnMgb3JkZXJlZC4="
+      }
+     }
+    ],
+    "id": "157d063a-9012-d166-5c57-2c1e5f0ce2ea",
+    "subject": {
+     "reference": "Patient/8b09f72a-ec63-248b-d008-ca8ba8c7bd60"
+    }
+   }
+  }
+ ],
+ "meta": {
+  "extension": [
+   {
+    "url": "urn:fhirsum:meta",
+    "valueString": "{\"traps\": [\"duplicate_obs\"], \"seed\": 2362, \"injected\": true, \"lab_values\": {\"4548-4\": [5.4, 5.4, 5.5, 5.4, 5.5, 5.4, 5.4], \"2160-0\": [0.9, 0.9, 0.9, 0.9, 1.0, 1.0, 1.0], \"33914-3\": [83.3, 83.6, 82.3, 84.8, 86.0, 84.3, 81.5], \"18262-6\": [102.3, 100.3, 106.4, 107.7, 104.3, 107.7, 102.3], \"2823-3\": [4.2, 4.3, 4.2, 4.2, 4.2, 4.2, 4.3], \"8480-6\": [122.7, 124.0, 121.9, 122.8, 120.9, 120.6, 121.0]}}"
+   }
+  ]
+ },
+ "_source": "generated"
+}
