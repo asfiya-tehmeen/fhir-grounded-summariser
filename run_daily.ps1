@@ -29,7 +29,10 @@ Step "120b handoff INJ nosan"    @("eval","--llm","groq","--model",$S120,"--patt
 # 3. Patient-friendly summaries (readability + fact preservation)
 Step "20b  patient S17"          @("eval","--llm","groq","--model",$S20, "--pattern",$S17,"--type","patient","--out","results/groq-gpt-oss-20b_patient")
 Step "120b medrec S17"           @("eval","--llm","groq","--model",$S120,"--pattern",$S17,"--type","medrec","--out","results/groq-gpt-oss-120b_medrec")
-# 4. Grow n: seeds 1-2 of every trap
+# 4. Prompt v2 (trend + exact-number rules), paired with the v1 runs above on the same patients
+Step "20b  handoff S17 prompt v2" @("eval","--llm","groq","--model",$S20, "--pattern",$S17,"--prompt","v2","--out","results/groq-gpt-oss-20b_handoff_v2")
+Step "20b  patient S17 prompt v2" @("eval","--llm","groq","--model",$S20, "--pattern",$S17,"--type","patient","--prompt","v2","--out","results/groq-gpt-oss-20b_patient_v2")
+# 5. Grow n: seeds 1-2 of every trap
 Step "20b  handoff EXPAND"       @("eval","--llm","groq","--model",$S20, "--pattern",$EXPAND,"--out","results/groq-gpt-oss-20b_handoff_expand")
 Step "120b handoff EXPAND"       @("eval","--llm","groq","--model",$S120,"--pattern",$EXPAND,"--out","results/groq-gpt-oss-120b_handoff_expand")
 

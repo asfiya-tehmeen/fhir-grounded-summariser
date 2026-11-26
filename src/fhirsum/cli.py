@@ -33,6 +33,9 @@ def main(argv=None):
     e.add_argument("--type", default="handoff", choices=["handoff", "medrec", "patient"])
     e.add_argument("--no-sanitise", action="store_true"); e.add_argument("--limit", type=int)
     e.add_argument("--pattern", default="*.json", help="glob inside --dir, e.g. '*_0*.json'")
+    e.add_argument("--prompt", default="v1", choices=["v1", "v2"], help="system prompt version (paired experiments)")
+    e.add_argument("--offline", action="store_true",
+                   help="never call the API: re-score cached answers only (uncached repair rounds are skipped and counted)")
     e.add_argument("--out", help="results dir (default results/<llm>_<type>[_nosan])")
 
     f = sub.add_parser("fetch"); f.add_argument("--base", required=True); f.add_argument("--patient", required=True)
@@ -71,12 +74,14 @@ def main(argv=None):
         from .evaluate import run_eval
         from .llm import make_llm
         llm = None if a.llm == "none" else make_llm(a.llm, a.model)
+        if llm is not None:
+            llm.offline = a.offline
         out = Path(a.out or f"results/{a.llm}_{a.type}{'_nosan' if a.no_sanitise else ''}")
         paths = sorted({p for pat in a.pattern.split(",") for p in Path(a.dir).glob(pat.strip())})
-        agg = run_eval(paths, llm, a.type, sanitise=not a.no_sanitise, out_dir=out, limit=a.limit)
+        agg = run_eval(paths, llm, a.type, sanitise=not a.no_sanitise, out_dir=out, limit=a.limit, prompt=a.prompt)
         print((out / "summary.md").read_text(encoding="utf-8"))
         if llm is not None:
-            print(f"llm calls={llm.calls} cache_hits={llm.cache_hits} tokens in/out={llm.tokens_in}/{llm.tokens_out}")
+            print(f"llm calls={llm.calls} cache_hits={llm.cache_hits} tokens spent now in/out={llm.spent_in}/{llm.spent_out}")
 
     elif a.cmd == "fetch":
         from .sources import fetch_patient

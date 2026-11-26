@@ -30,13 +30,35 @@ class SafetyCheck:
     refs: list[str]
 
 
+def fitted_rel_change(values: list[float]) -> float:
+    """Relative change over the series from a least-squares line through ALL points (not first vs last), as a
+    fraction of the series mean. Robust to single-point noise and rounding steps (creatinine 0.9 <-> 1.0)."""
+    n = len(values)
+    if n < 2:
+        return 0.0
+    if n == 2:
+        a, b = values
+        return (b - a) / abs(a) if a else 0.0
+    xs = range(n)
+    mx, my = (n - 1) / 2, sum(values) / n
+    sxx = sum((x - mx) ** 2 for x in xs)
+    slope = sum((x - mx) * (y - my) for x, y in zip(xs, values)) / sxx
+    return slope * (n - 1) / abs(my) if my else 0.0
+
+
+def reporting_step(values: list[float]) -> float:
+    """Finest reporting resolution in the series (1.0 / 0.9 -> 0.1; 52 / 49.5 -> 0.1; 120 / 118 -> 1)."""
+    decimals = 0
+    for v in values:
+        s = f"{round(v, 6):.6f}".rstrip("0").rstrip(".")
+        decimals = max(decimals, len(s.split(".")[1]) if "." in s else 0)
+    return 10.0 ** -decimals
+
+
 def trend_direction(values: list[float]) -> str:
-    if len(values) < 2:
-        return "stable"
-    a, b = values[0], values[-1]
-    if a == 0:
-        return "increasing" if b > 0 else ("decreasing" if b < 0 else "stable")
-    rel = (b - a) / abs(a)
+    rel = fitted_rel_change(values)
+    if values and abs(rel * (sum(values) / len(values))) < reporting_step(values):
+        return "stable"            # the whole fitted change is smaller than one reporting step: not a trend
     if rel > TREND_REL_CHANGE:
         return "increasing"
     if rel < -TREND_REL_CHANGE:

@@ -25,6 +25,10 @@ class QuotaExhausted(RuntimeError):
     """Daily quota hit: stop the run cleanly (cached calls are kept, rerun resumes for free)."""
 
 
+class CacheMiss(QuotaExhausted):
+    """Offline mode: the answer is not cached and calling the API is not allowed."""
+
+
 def log_usage(**kw):
     USAGE_LOG.parent.mkdir(parents=True, exist_ok=True)
     with open(USAGE_LOG, "a", encoding="utf-8") as f:
@@ -46,7 +50,11 @@ class LLM:
     model = ""
 
     def __init__(self):
+        # tokens_in/out and latency are the cost of PRODUCING each answer, also when it is replayed from cache
+        # (so per-patient cost stats stay right on resumed runs). spent_* is what this process actually used.
         self.tokens_in = self.tokens_out = 0
+        self.spent_in = self.spent_out = 0
+        self.latency = 0.0
         self.calls = self.cache_hits = 0
 
     def _call(self, system: str, user: str) -> str:
@@ -57,12 +65,22 @@ class LLM:
         path = CACHE_DIR / f"{key}.json"
         if self.name != "mock" and path.exists():
             self.cache_hits += 1
-            return json.loads(path.read_text(encoding="utf-8"))["text"]
+            d = json.loads(path.read_text(encoding="utf-8"))
+            self.tokens_in += d.get("tokens_in", 0); self.tokens_out += d.get("tokens_out", 0)
+            self.latency += d.get("latency_s", 0.0)
+            return d["text"]
+        if getattr(self, "offline", False):
+            raise CacheMiss(f"offline: no cached answer for this {self.model} prompt")
         self.calls += 1
+        ti, to, t0 = self.tokens_in, self.tokens_out, time.time()
         text = self._call(system, user)
+        dt = time.time() - t0
+        self.latency += dt
+        self.spent_in += self.tokens_in - ti; self.spent_out += self.tokens_out - to
         if self.name != "mock":
             CACHE_DIR.mkdir(parents=True, exist_ok=True)
-            path.write_text(json.dumps({"model": self.model, "text": text}), encoding="utf-8")
+            path.write_text(json.dumps({"model": self.model, "text": text, "tokens_in": self.tokens_in - ti,
+                                        "tokens_out": self.tokens_out - to, "latency_s": round(dt, 2)}), encoding="utf-8")
         return text
 
 

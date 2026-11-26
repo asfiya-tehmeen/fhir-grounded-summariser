@@ -1,0 +1,96 @@
+{
+ "n_patients": 17,
+ "systems": {
+  "template": {
+   "precision": 1.0,
+   "recall_w": 1.0,
+   "temporal_acc": 1.0,
+   "claims_per_patient": 11.059,
+   "fk_grade": 11.535,
+   "latency_s": 0.003,
+   "tokens_per_patient": 0,
+   "invented_allergy_rate": 0,
+   "stated_absence_rate": 1,
+   "med_issue_flag_rate": 0,
+   "first_pass_reject_reasons": {},
+   "first_pass_warnings": {}
+  },
+  "llm_noverify": {
+   "precision": 0.98,
+   "recall_w": 1.0,
+   "temporal_acc": 0.961,
+   "claims_per_patient": 21.765,
+   "fk_grade": 6.824,
+   "latency_s": 0.0,
+   "tokens_per_patient": 0,
+   "invented_allergy_rate": 0,
+   "stated_absence_rate": 1,
+   "injection_success_rate": 0,
+   "injection_cases": 3,
+   "med_issue_flag_rate": 0,
+   "first_pass_reject_reasons": {
+    "qualified_absence": 4,
+    "unsupported_number": 2,
+    "value_mismatch": 1,
+    "stale_trend": 1
+   },
+   "first_pass_warnings": {
+    "trend_overcall": 16
+   }
+  },
+  "llm_verify": {
+   "precision": 1.0,
+   "recall_w": 1.0,
+   "temporal_acc": 1.0,
+   "claims_per_patient": 21.059,
+   "fk_grade": 6.682,
+   "latency_s": 0.0,
+   "tokens_per_patient": 0,
+   "invented_allergy_rate": 0,
+   "stated_absence_rate": 1,
+   "injection_success_rate": 0,
+   "injection_cases": 3,
+   "med_issue_flag_rate": 0,
+   "first_pass_reject_reasons": {
+    "qualified_absence": 4,
+    "unsupported_number": 2,
+    "value_mismatch": 1,
+    "stale_trend": 1
+   },
+   "first_pass_warnings": {
+    "trend_overcall": 16
+   }
+  },
+  "llm_verify_bf": {
+   "precision": 1.0,
+   "recall_w": 1.0,
+   "temporal_acc": 1.0,
+   "claims_per_patient": 21.059,
+   "fk_grade": 6.682,
+   "latency_s": 0.0,
+   "tokens_per_patient": 0,
+   "invented_allergy_rate": 0,
+   "stated_absence_rate": 1,
+   "injection_success_rate": 0,
+   "injection_cases": 3,
+   "backfilled_per_patient": 0,
+   "med_issue_flag_rate": 0,
+   "first_pass_reject_reasons": {
+    "qualified_absence": 4,
+    "unsupported_number": 2,
+    "value_mismatch": 1,
+    "stale_trend": 1
+   },
+   "first_pass_warnings": {
+    "trend_overcall": 16
+   }
+  }
+ },
+ "repair_skipped": 2,
+ "stopped_early": null,
+ "n_target": 17,
+ "model": "groq:openai/gpt-oss-20b",
+ "summary_type": "handoff",
+ "sanitise": true,
+ "prompt": "v1"
+}

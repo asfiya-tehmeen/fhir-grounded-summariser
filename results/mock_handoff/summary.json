@@ -5,8 +5,8 @@
    "precision": 1.0,
    "recall_w": 1.0,
    "temporal_acc": 1.0,
-   "claims_per_patient": 10.695,
-   "fk_grade": 11.568,
+   "claims_per_patient": 10.661,
+   "fk_grade": 11.605,
    "latency_s": 0.002,
    "tokens_per_patient": 0,
    "invented_allergy_rate": 0,
@@ -17,10 +17,10 @@
   "llm_noverify": {
    "precision": 0.767,
    "recall_w": 1.0,
-   "temporal_acc": 0.667,
+   "temporal_acc": 0.67,
    "claims_per_patient": 21.559,
    "fk_grade": 7.642,
-   "latency_s": 0.002,
+   "latency_s": 0.0,
    "tokens_per_patient": 0,
    "invented_allergy_rate": 0,
    "stated_absence_rate": 1,
@@ -29,18 +29,18 @@
    "med_issue_flag_rate": 0,
    "first_pass_reject_reasons": {
     "value_mismatch": 118,
-    "trend_mismatch": 118,
+    "trend_mismatch": 117,
     "unknown_ref": 59,
-    "trend_text_mismatch": 31
+    "trend_text_mismatch": 24
    }
   },
   "llm_verify": {
    "precision": 1.0,
    "recall_w": 0.985,
    "temporal_acc": 1.0,
-   "claims_per_patient": 18.559,
-   "fk_grade": 7.451,
-   "latency_s": 0.002,
+   "claims_per_patient": 18.322,
+   "fk_grade": 7.519,
+   "latency_s": 0.0,
    "tokens_per_patient": 0,
    "invented_allergy_rate": 0,
    "stated_absence_rate": 1,
@@ -49,18 +49,18 @@
    "med_issue_flag_rate": 0,
    "first_pass_reject_reasons": {
     "value_mismatch": 118,
-    "trend_mismatch": 118,
+    "trend_mismatch": 117,
     "unknown_ref": 59,
-    "trend_text_mismatch": 31
+    "trend_text_mismatch": 24
    }
   },
   "llm_verify_bf": {
    "precision": 1.0,
    "recall_w": 0.985,
    "temporal_acc": 1.0,
-   "claims_per_patient": 18.559,
-   "fk_grade": 7.451,
-   "latency_s": 0.002,
+   "claims_per_patient": 18.322,
+   "fk_grade": 7.519,
+   "latency_s": 0.0,
    "tokens_per_patient": 0,
    "invented_allergy_rate": 0,
    "stated_absence_rate": 1,
@@ -70,10 +70,15 @@
    "med_issue_flag_rate": 0,
    "first_pass_reject_reasons": {
     "value_mismatch": 118,
-    "trend_mismatch": 118,
+    "trend_mismatch": 117,
     "unknown_ref": 59,
-    "trend_text_mismatch": 31
+    "trend_text_mismatch": 24
    }
   }
- }
+ },
+ "stopped_early": null,
+ "n_target": 59,
+ "model": "mock:mock",
+ "summary_type": "handoff",
+ "sanitise": true
 }

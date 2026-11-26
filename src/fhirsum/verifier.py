@@ -63,15 +63,25 @@ def concept_matches(text: str, display: str) -> bool:
     return False
 
 
-def _small_change_ok(claimed: str, values: list[float]) -> bool:
-    """Below the 'stable' threshold, either 'stable' or the sign of the change is defensible; only a claim that
-    contradicts the sign of the change (or calls a large change stable) is an error."""
-    from .facts import TREND_REL_CHANGE
-    a, b = values[0], values[-1]
-    rel = (b - a) / abs(a) if a else 0.0
-    if abs(rel) > TREND_REL_CHANGE:
-        return False
-    return claimed == "stable" or (claimed == "increasing" and rel > 0) or (claimed == "decreasing" and rel < 0)
+TREND_NOISE_BAND = 0.02   # below 2% fitted change, a direction word is noise, not a trend
+
+
+def trend_judgement(claimed: str, values: list[float]) -> tuple[str | None, bool]:
+    """(error, warning) for a claimed trend label. The danger being guarded is mislabelling a REAL trend
+    ('improving' while HbA1c rises 7.0 -> 9.1), so:
+      - real trend (fitted change > 5% and more than one reporting step): label must match, else error
+      - 2-5%: 'stable' or the matching direction are both defensible; the opposite direction is an error
+      - < 2%: 'stable' is right; a direction label is noise -> kept, but counted as a warning"""
+    from .facts import fitted_rel_change, trend_direction
+    actual = trend_direction(values)
+    if actual != "stable":
+        return (None if claimed == actual else "real trend mislabelled"), False
+    if claimed == "stable":
+        return None, False
+    rel = fitted_rel_change(values)
+    if abs(rel) < TREND_NOISE_BAND:
+        return None, True
+    return (None if (claimed == "increasing") == (rel > 0) else "label opposite to fitted direction"), False
 
 
 def _approx(a: float, b: float) -> bool:
@@ -107,6 +117,7 @@ class Verifier:
 
     # ------------------------------------------------------------------------------
     def verify(self, c: Claim) -> Verdict:
+        self._warnings: list[str] = []
         reasons: list[str] = []
         refs, res = [], []
         for h in c.refs:
@@ -117,7 +128,7 @@ class Verifier:
                 refs.append(r); res.append(self.rec.resources[r])
         if c.kind == "absence":
             reasons += self._absence(c)
-            return Verdict(claim=c, ok=not reasons, reasons=reasons, resolved_refs=refs)
+            return Verdict(claim=c, ok=not reasons, reasons=reasons, resolved_refs=refs, warnings=self._warnings)
         if not c.refs:
             reasons.append("no_citation")
         if reasons:
@@ -133,7 +144,7 @@ class Verifier:
         reasons += fn(c, res)
         reasons += self._dates(c, res)
         reasons += self._numbers(c, res)
-        return Verdict(claim=c, ok=not reasons, reasons=reasons, resolved_refs=refs)
+        return Verdict(claim=c, ok=not reasons, reasons=reasons, resolved_refs=refs, warnings=self._warnings)
 
     def verify_all(self, claims: list[Claim]) -> list[Verdict]:
         return [self.verify(c) for c in claims]
@@ -247,9 +258,14 @@ class Verifier:
         out = []
         if not concept_matches(c.text, series_pts[0].name) and not concept_matches(c.text, clinical.short_lab_name(series_pts[0])):
             out.append(f"concept_mismatch:'{series_pts[0].name}'")
-        actual = trend_direction([p.value for p in series_pts])
-        if c.trend and c.trend != actual and not _small_change_ok(c.trend, [p.value for p in series_pts]):
-            out.append(f"trend_mismatch:claimed {c.trend}, values {[p.value for p in series_pts]} are {actual}")
+        vals = [p.value for p in series_pts]
+        actual = trend_direction(vals)
+        if c.trend:
+            err, warn = trend_judgement(c.trend, vals)
+            if err:
+                out.append(f"trend_mismatch:claimed {c.trend}, values {vals} are {actual} ({err})")
+            if warn:
+                self._warnings.append(f"trend_overcall:'{c.trend}' on a noise-level series {vals}")
         t = c.text.lower()
         if actual == "decreasing" and re.search(UP_WORDS, t) and not re.search(DOWN_WORDS, t):
             out.append("trend_text_mismatch:text says up, values went down")

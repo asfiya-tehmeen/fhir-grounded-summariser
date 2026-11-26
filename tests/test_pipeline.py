@@ -78,3 +78,30 @@ def test_app_endpoints(tmp_path, monkeypatch):
     assert r2.status_code == 200
     assert c.post("/api/summarise_file", json={"path": "C:/Windows/win.ini", "provider": "mock"}).status_code == 403
     assert c.get("/launch.html").status_code == 200
+
+
+def test_offline_mode_never_calls_api_and_skips_uncached_repair(tmp_path, monkeypatch):
+    import fhirsum.llm as llm_mod
+    from fhirsum.llm import CacheMiss, LLM
+
+    class Fake(LLM):
+        name, model = "fake", "fake"
+        def _call(self, system, user):
+            raise AssertionError("offline mode must not call the API")
+
+    monkeypatch.setattr(llm_mod, "CACHE_DIR", tmp_path)
+    rec = generate(5)
+    f = Fake(); f.offline = True
+    import pytest
+    with pytest.raises(CacheMiss):            # first pass not cached -> stop (subclass of QuotaExhausted)
+        summarise(rec, f)
+    # cache a first pass that has a rejected claim; the repair round is then uncached and must be skipped
+    from fhirsum import prompts
+    from fhirsum.summarise import prepare_notes
+    import hashlib
+    user = prompts.build_user_prompt(rec, prepare_notes(rec)[0], "handoff")
+    key = hashlib.sha256(f"fake|fake|{prompts.SYSTEM}|{user}".encode()).hexdigest()
+    bad = {"claims": [{"kind": "condition", "text": "Atrial fibrillation", "refs": ["PROB-999"]}]}
+    (tmp_path / f"{key}.json").write_text(json.dumps({"text": json.dumps(bad)}))
+    s = summarise(rec, f)
+    assert s.repair_skipped and s.dropped

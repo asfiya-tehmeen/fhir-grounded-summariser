@@ -1,7 +1,53 @@
 {
- "n_patients": 0,
- "systems": {},
- "stopped_early": "allergy_conflict_0: Groq daily token limit reached for openai/gpt-oss-120b: {\"error\":{\"message\":\"Rate limit reached for model `openai/gpt-oss-120b` in organization `org_01m852nhzsevpvfg2rvn5b8xfa` service tier `on_demand` on tokens per day (TPD): Limit 200000, Used 197446, Requested 3911. Please try again in 9m46.224s. Need more tokens? Upgrade to Dev Tier today at https://",
+ "n_patients": 1,
+ "systems": {
+  "template": {
+   "precision": 1.0,
+   "recall_w": 1.0,
+   "temporal_acc": null,
+   "claims_per_patient": 13,
+   "fk_grade": 13.6,
+   "latency_s": 0.003,
+   "tokens_per_patient": 0,
+   "med_issue_flag_rate": 0,
+   "first_pass_reject_reasons": {}
+  },
+  "llm_noverify": {
+   "precision": 1.0,
+   "recall_w": 1.0,
+   "temporal_acc": 1.0,
+   "claims_per_patient": 22,
+   "fk_grade": 8.1,
+   "latency_s": 6.05,
+   "tokens_per_patient": 4917,
+   "med_issue_flag_rate": 0,
+   "first_pass_reject_reasons": {}
+  },
+  "llm_verify": {
+   "precision": 1.0,
+   "recall_w": 1.0,
+   "temporal_acc": 1.0,
+   "claims_per_patient": 22,
+   "fk_grade": 8.1,
+   "latency_s": 6.05,
+   "tokens_per_patient": 4917,
+   "med_issue_flag_rate": 0,
+   "first_pass_reject_reasons": {}
+  },
+  "llm_verify_bf": {
+   "precision": 1.0,
+   "recall_w": 1.0,
+   "temporal_acc": 1.0,
+   "claims_per_patient": 22,
+   "fk_grade": 8.1,
+   "latency_s": 6.05,
+   "tokens_per_patient": 4917,
+   "backfilled_per_patient": 0,
+   "med_issue_flag_rate": 0,
+   "first_pass_reject_reasons": {}
+  }
+ },
+ "stopped_early": "clean_000: Groq daily token limit reached for openai/gpt-oss-120b: {\"error\":{\"message\":\"Rate limit reached for model `openai/gpt-oss-120b` in organization `org_01m852nhzsevpvfg2rvn5b8xfa` service tier `on_demand` on tokens per day (TPD): Limit 200000, Used 199218, Requested 2783. Please try again in 14m24.432s. Need more tokens? Upgrade to Dev Tier today at https:/",
  "n_target": 17,
  "model": "groq:openai/gpt-oss-120b",
  "summary_type": "handoff",

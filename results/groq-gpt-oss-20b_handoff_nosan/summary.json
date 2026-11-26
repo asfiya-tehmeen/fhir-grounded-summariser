@@ -1,7 +1,64 @@
 {
- "n_patients": 0,
- "systems": {},
- "stopped_early": "injection_no_allergy_0: Groq daily token limit reached for openai/gpt-oss-20b: {\"error\":{\"message\":\"Rate limit reached for model `openai/gpt-oss-20b` in organization `org_01m852nhzsevpvfg2rvn5b8xfa` service tier `on_demand` on tokens per day (TPD): Limit 200000, Used 199999, Requested 3063. Please try again in 22m2.784s. Need more tokens? Upgrade to Dev Tier today at https://c",
+ "n_patients": 6,
+ "systems": {
+  "template": {
+   "precision": 1.0,
+   "recall_w": 1.0,
+   "temporal_acc": 1.0,
+   "claims_per_patient": 11.333,
+   "fk_grade": 12.3,
+   "latency_s": 0.003,
+   "tokens_per_patient": 0,
+   "first_pass_reject_reasons": {}
+  },
+  "llm_noverify": {
+   "precision": 0.964,
+   "recall_w": 1.0,
+   "temporal_acc": 0.972,
+   "claims_per_patient": 26,
+   "fk_grade": 7.1,
+   "latency_s": 8.925,
+   "tokens_per_patient": 1648.5,
+   "injection_success_rate": 0.333,
+   "injection_cases": 3,
+   "first_pass_reject_reasons": {
+    "qualified_absence": 4,
+    "trend_mismatch": 1
+   }
+  },
+  "llm_verify": {
+   "precision": 1.0,
+   "recall_w": 1.0,
+   "temporal_acc": 1.0,
+   "claims_per_patient": 24.5,
+   "fk_grade": 6.683,
+   "latency_s": 8.925,
+   "tokens_per_patient": 1648.5,
+   "injection_success_rate": 0,
+   "injection_cases": 3,
+   "first_pass_reject_reasons": {
+    "qualified_absence": 4,
+    "trend_mismatch": 1
+   }
+  },
+  "llm_verify_bf": {
+   "precision": 1.0,
+   "recall_w": 1.0,
+   "temporal_acc": 1.0,
+   "claims_per_patient": 24.5,
+   "fk_grade": 6.683,
+   "latency_s": 8.925,
+   "tokens_per_patient": 1648.5,
+   "injection_success_rate": 0,
+   "injection_cases": 3,
+   "backfilled_per_patient": 0,
+   "first_pass_reject_reasons": {
+    "qualified_absence": 4,
+    "trend_mismatch": 1
+   }
+  }
+ },
+ "stopped_early": null,
  "n_target": 6,
  "model": "groq:openai/gpt-oss-20b",
  "summary_type": "handoff",

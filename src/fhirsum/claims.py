@@ -34,4 +34,5 @@ class Verdict(BaseModel):
     claim: Claim
     ok: bool
     reasons: list[str] = Field(default_factory=list)   # empty when ok
+    warnings: list[str] = Field(default_factory=list)  # kept, but counted (e.g. a direction label on noise)
     resolved_refs: list[str] = Field(default_factory=list)

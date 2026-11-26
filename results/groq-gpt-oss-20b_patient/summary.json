@@ -1,7 +1,88 @@
 {
- "n_patients": 0,
- "systems": {},
- "stopped_early": "allergy_conflict_0: Groq daily token limit reached for openai/gpt-oss-20b: {\"error\":{\"message\":\"Rate limit reached for model `openai/gpt-oss-20b` in organization `org_01m852nhzsevpvfg2rvn5b8xfa` service tier `on_demand` on tokens per day (TPD): Limit 200000, Used 199990, Requested 3557. Please try again in 25m32.304s. Need more tokens? Upgrade to Dev Tier today at https://",
+ "n_patients": 14,
+ "systems": {
+  "template": {
+   "precision": 1.0,
+   "recall_w": 1.0,
+   "temporal_acc": 1.0,
+   "claims_per_patient": 10.857,
+   "fk_grade": 11.936,
+   "latency_s": 0.003,
+   "tokens_per_patient": 0,
+   "invented_allergy_rate": 0,
+   "stated_absence_rate": 1,
+   "med_issue_flag_rate": 0,
+   "first_pass_reject_reasons": {}
+  },
+  "llm_noverify": {
+   "precision": 0.968,
+   "recall_w": 1.0,
+   "temporal_acc": 0.882,
+   "claims_per_patient": 20.929,
+   "fk_grade": 4.386,
+   "latency_s": 35.884,
+   "tokens_per_patient": 4757.857,
+   "invented_allergy_rate": 0,
+   "stated_absence_rate": 1,
+   "injection_success_rate": 0,
+   "injection_cases": 3,
+   "med_issue_flag_rate": 0,
+   "first_pass_reject_reasons": {
+    "unsupported_number": 8,
+    "trend_mismatch": 3,
+    "stale_trend": 2,
+    "date_mismatch": 1,
+    "text_date_unsupported": 1,
+    "unit_mismatch": 1
+   }
+  },
+  "llm_verify": {
+   "precision": 1.0,
+   "recall_w": 1.0,
+   "temporal_acc": 1.0,
+   "claims_per_patient": 20.857,
+   "fk_grade": 4.364,
+   "latency_s": 35.884,
+   "tokens_per_patient": 4757.857,
+   "invented_allergy_rate": 0,
+   "stated_absence_rate": 1,
+   "injection_success_rate": 0,
+   "injection_cases": 3,
+   "med_issue_flag_rate": 0,
+   "first_pass_reject_reasons": {
+    "unsupported_number": 8,
+    "trend_mismatch": 3,
+    "stale_trend": 2,
+    "date_mismatch": 1,
+    "text_date_unsupported": 1,
+    "unit_mismatch": 1
+   }
+  },
+  "llm_verify_bf": {
+   "precision": 1.0,
+   "recall_w": 1.0,
+   "temporal_acc": 1.0,
+   "claims_per_patient": 20.857,
+   "fk_grade": 4.364,
+   "latency_s": 35.884,
+   "tokens_per_patient": 4757.857,
+   "invented_allergy_rate": 0,
+   "stated_absence_rate": 1,
+   "injection_success_rate": 0,
+   "injection_cases": 3,
+   "backfilled_per_patient": 0,
+   "med_issue_flag_rate": 0,
+   "first_pass_reject_reasons": {
+    "unsupported_number": 8,
+    "trend_mismatch": 3,
+    "stale_trend": 2,
+    "date_mismatch": 1,
+    "text_date_unsupported": 1,
+    "unit_mismatch": 1
+   }
+  }
+ },
+ "stopped_early": "out_of_range_0: Groq daily token limit reached for openai/gpt-oss-20b: {\"error\":{\"message\":\"Rate limit reached for model `openai/gpt-oss-20b` in organization `org_01m852nhzsevpvfg2rvn5b8xfa` service tier `on_demand` on tokens per day (TPD): Limit 200000, Used 198091, Requested 5309. Please try again in 24m28.8s. Need more tokens? Upgrade to Dev Tier today at https://co",
  "n_target": 17,
  "model": "groq:openai/gpt-oss-20b",
  "summary_type": "patient",

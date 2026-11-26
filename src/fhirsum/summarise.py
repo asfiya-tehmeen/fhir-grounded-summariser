@@ -10,7 +10,7 @@ from pydantic import ValidationError
 from . import prompts
 from .claims import Claim, Verdict
 from .facts import Fact, SafetyCheck, covered, key_facts, safety_checks
-from .llm import LLM, parse_json
+from .llm import LLM, CacheMiss, parse_json
 from .record import PatientRecord, ref_of
 from .sanitize import quarantine
 from .verifier import Verifier
@@ -33,6 +33,7 @@ class Summary:
     tokens_out: int = 0
     mode: str = "verify"
     backfilled_ids: set[str] = field(default_factory=set)
+    repair_skipped: bool = False            # offline re-score: repair answer not cached, repair round not run
 
     @property
     def model_kept(self) -> list[Verdict]:
@@ -117,15 +118,15 @@ def fact_claim(rec: PatientRecord, f: Fact, summary_type: str = "handoff") -> Cl
 
 
 def summarise(rec: PatientRecord, llm: LLM, summary_type: str = "handoff", sanitise: bool = True,
-              verify: bool = True, repair: bool = True, backfill: bool = True) -> Summary:
-    t0 = time.time()
-    ti, to = llm.tokens_in, llm.tokens_out
+              verify: bool = True, repair: bool = True, backfill: bool = True, prompt: str = "v1") -> Summary:
+    system = prompts.SYSTEMS[prompt]
+    ti, to, l0 = llm.tokens_in, llm.tokens_out, llm.latency
     notes, quarantined = prepare_notes(rec, sanitise)
     checks = safety_checks(rec, quarantined)
     ver = Verifier(rec, notes, checks, lay_ok=summary_type == "patient")
     user = prompts.build_user_prompt(rec, notes, summary_type)
 
-    claims, malformed = _parse_claims(llm.complete(prompts.SYSTEM, user))
+    claims, malformed = _parse_claims(llm.complete(system, user))
     for i, c in enumerate(claims):
         c.id = f"c{i + 1}"
     first = ver.verify_all(claims)
@@ -137,8 +138,12 @@ def summarise(rec: PatientRecord, llm: LLM, summary_type: str = "handoff", sanit
         rejected = [v for v in first if not v.ok]
         repaired_bad: list[Verdict] = []
         if repair and rejected:
-            fixed, bad2 = _parse_claims(llm.complete(
-                prompts.SYSTEM, prompts.repair_prompt([(_dump(v.claim), v.reasons) for v in rejected]) + "\n\n" + user))
+            try:
+                fix_text = llm.complete(system, prompts.repair_prompt(
+                    [(_dump(v.claim), v.reasons) for v in rejected]) + "\n\n" + user)
+            except CacheMiss:
+                fix_text, s.repair_skipped = '{"claims": []}', True
+            fixed, bad2 = _parse_claims(fix_text)
             s.malformed += bad2
             for j, c in enumerate(fixed):
                 c.id = f"r{j + 1}"
@@ -158,7 +163,7 @@ def summarise(rec: PatientRecord, llm: LLM, summary_type: str = "handoff", sanit
                     v = ver.verify(c)
                     if v.ok:
                         s.kept.append(v); s.backfilled_ids.add(c.id)
-    s.latency_s = round(time.time() - t0, 2)
+    s.latency_s = round(llm.latency - l0, 2)          # model time, including when replayed from cache
     s.tokens_in, s.tokens_out = llm.tokens_in - ti, llm.tokens_out - to
     return s
 
