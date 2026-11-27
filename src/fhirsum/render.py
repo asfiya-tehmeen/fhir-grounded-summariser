@@ -4,10 +4,30 @@ from __future__ import annotations
 
 from .prompts import SECTIONS
 from .record import PatientRecord
+from .facts import SafetyCheck
 from .summarise import Summary
 
 DISCLAIMER = ("Research prototype on synthetic / de-identified data. Not clinically validated. "
               "Not medical advice. Always check the source record.")
+
+
+MAX_CRITICAL_SHOWN = 3
+CHECK_ORDER = ["note_conflicts_record", "allergy_conflict", "duplicate_medication", "critical_lab",
+               "quarantined_text", "no_allergy_record"]
+
+
+def display_checks(checks: list[SafetyCheck], max_critical: int = MAX_CRITICAL_SHOWN) -> list[SafetyCheck]:
+    """Banner order: record conflicts first. Critical labs ranked by severity (times past the limit) and capped,
+    with the rest summarised in one line. MIMIC ICU stays averaged 6.6 critical-lab alerts: showing all of them
+    buries the ones that matter (alert fatigue). Nothing is dropped from the data, only from the banner."""
+    crit = sorted((c for c in checks if c.kind == "critical_lab"), key=lambda c: -c.severity)
+    rest = [c for c in checks if c.kind != "critical_lab"]
+    shown = crit[:max_critical]
+    if len(crit) > max_critical:
+        shown.append(SafetyCheck("critical_lab", f"+{len(crit) - max_critical} more out-of-range result(s), less "
+                                 "extreme: see the labs section", [], 0.0))
+    rank = {k: i for i, k in enumerate(CHECK_ORDER)}
+    return sorted(rest + shown, key=lambda c: rank.get(c.kind, len(rank)))
 
 
 def _ordered_sections(s: Summary) -> list[tuple[str, list]]:
@@ -23,7 +43,7 @@ def to_markdown(rec: PatientRecord, s: Summary) -> str:
     out = [f"# {s.summary_type} summary ({s.mode})", f"_{DISCLAIMER}_", ""]
     if s.checks:
         out.append("## System checks (computed by code, not the model)")
-        out += [f"- **{c.kind}**: {c.message} {' '.join(f'[{r}]' for r in c.refs)}" for c in s.checks]
+        out += [f"- **{c.kind}**: {c.message} {' '.join(f'[{r}]' for r in c.refs)}" for c in display_checks(s.checks)]
         out.append("")
     for name, vs in _ordered_sections(s):
         out.append(f"## {name}")
@@ -51,7 +71,8 @@ def to_json(rec: PatientRecord, s: Summary) -> dict:
         "patient": {"id": rec.patient.get("id"), "gender": rec.patient.get("gender"), "age": rec.age(), "source": rec.source},
         "sections": [{"name": n, "claims": [vj(v) for v in vs]} for n, vs in _ordered_sections(s)],
         "dropped": [vj(v) for v in s.dropped],
-        "checks": [{"kind": c.kind, "message": c.message, "refs": c.refs} for c in s.checks],
+        "checks": [{"kind": c.kind, "message": c.message, "refs": c.refs} for c in display_checks(s.checks)],
+        "all_checks": [{"kind": c.kind, "message": c.message, "refs": c.refs, "severity": c.severity} for c in s.checks],
         "resources": {r: rec.resources[r] for r in used if r in rec.resources},
         "stats": {"kept": len(s.kept), "backfilled": len(s.backfilled_ids), "dropped": len(s.dropped), "malformed": s.malformed,
                   "latency_s": s.latency_s, "tokens_in": s.tokens_in, "tokens_out": s.tokens_out},

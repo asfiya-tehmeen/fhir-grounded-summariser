@@ -1,9 +1,13 @@
 {
  "n_patients": 0,
  "systems": {},
- "stopped_early": "allergy_conflict_1: Groq daily token limit reached for openai/gpt-oss-20b: {\"error\":{\"message\":\"Rate limit reached for model `openai/gpt-oss-20b` in organization `org_01m852nhzsevpvfg2rvn5b8xfa` service tier `on_demand` on tokens per day (TPD): Limit 200000, Used 198085, Requested 5379. Please try again in 24m56.447999999s. Need more tokens? Upgrade to Dev Tier today at ht",
- "n_target": 26,
+ "repair_skipped": 0,
+ "conflict_flagged_rate": null,
+ "injected_cases": 0,
+ "stopped_early": "allergy_conflict_1: Groq daily token limit reached for openai/gpt-oss-20b: {\"error\":{\"message\":\"Rate limit reached for model `openai/gpt-oss-20b` in organization `org_01m852nhzsevpvfg2rvn5b8xfa` service tier `on_demand` on tokens per day (TPD): Limit 200000, Used 198266, Requested 7253. Please try again in 39m44.208s. Need more tokens? Upgrade to Dev Tier today at https://",
+ "n_target": 46,
  "model": "groq:openai/gpt-oss-20b",
  "summary_type": "handoff",
- "sanitise": true
+ "sanitise": true,
+ "prompt": "v1"
 }

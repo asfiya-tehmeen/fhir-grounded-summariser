@@ -11,7 +11,7 @@ from .record import PatientRecord
 
 # High-volume ICU streams and non-clinical resources: skipped so a bundle stays summarisable.
 MIMIC_SKIP = ("Chartevents", "Outputevents", "Datetimeevents", "Micro", "Specimen", "Location", "Organization",
-              "MedicationAdministration", "MedicationDispense", "MedicationMix", "EncounterICU", "ProcedureICU")
+              "MedicationAdministration", "MedicationDispense", "EncounterICU", "ProcedureICU")
 FETCH_TYPES = ["Condition", "MedicationRequest", "AllergyIntolerance", "Observation", "Encounter", "DocumentReference"]
 
 

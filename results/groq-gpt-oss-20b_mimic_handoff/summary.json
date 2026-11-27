@@ -1,0 +1,78 @@
+{
+ "n_patients": 1,
+ "systems": {
+  "template": {
+   "precision": 1.0,
+   "recall_w": 1.0,
+   "temporal_acc": 1.0,
+   "claims_per_patient": 70,
+   "fk_grade": 10.0,
+   "latency_s": 0.015,
+   "tokens_per_patient": 0,
+   "first_pass_reject_reasons": {},
+   "first_pass_warnings": {}
+  },
+  "llm_noverify": {
+   "precision": 0.931,
+   "recall_w": 0.894,
+   "temporal_acc": 0.895,
+   "claims_per_patient": 58,
+   "fk_grade": 7.9,
+   "latency_s": 68.06,
+   "tokens_per_patient": 10845,
+   "first_pass_reject_reasons": {
+    "concept_mismatch": 2,
+    "date_mismatch": 1,
+    "text_date_unsupported": 1,
+    "no_citation": 1
+   },
+   "first_pass_warnings": {
+    "trend_overcall": 2
+   }
+  },
+  "llm_verify": {
+   "precision": 1.0,
+   "recall_w": 0.814,
+   "temporal_acc": 1.0,
+   "claims_per_patient": 54,
+   "fk_grade": 8.2,
+   "latency_s": 68.06,
+   "tokens_per_patient": 10845,
+   "first_pass_reject_reasons": {
+    "concept_mismatch": 2,
+    "date_mismatch": 1,
+    "text_date_unsupported": 1,
+    "no_citation": 1
+   },
+   "first_pass_warnings": {
+    "trend_overcall": 2
+   }
+  },
+  "llm_verify_bf": {
+   "precision": 1.0,
+   "recall_w": 0.841,
+   "temporal_acc": 1.0,
+   "claims_per_patient": 55,
+   "fk_grade": 8.2,
+   "latency_s": 68.06,
+   "tokens_per_patient": 10845,
+   "backfilled_per_patient": 1,
+   "first_pass_reject_reasons": {
+    "concept_mismatch": 2,
+    "date_mismatch": 1,
+    "text_date_unsupported": 1,
+    "no_citation": 1
+   },
+   "first_pass_warnings": {
+    "trend_overcall": 2
+   }
+  }
+ },
+ "repair_skipped": 0,
+ "stopped_early": "crashed: RuntimeError: Groq 413: {\"error\":{\"message\":\"Request too large for model `openai/gpt-oss-20b` in organization `org_01m852nhzsevpvfg2rvn5b8xfa` service tier `on_demand` on tokens per minute (TPM): Limit 8000, Requested 8638, please reduce your message size and try again. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing\",\"type\":\"tokens\",\"code\":\"rate_limit_exceeded\"}}\n",
+ "n_target": 20,
+ "model": "groq:openai/gpt-oss-20b",
+ "summary_type": "handoff",
+ "sanitise": true,
+ "prompt": "v1"
+}

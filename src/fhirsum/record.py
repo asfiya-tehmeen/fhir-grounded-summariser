@@ -200,7 +200,30 @@ class PatientRecord:
             return concept_text(mr["medicationCodeableConcept"])
         ref = (mr.get("medicationReference") or {}).get("reference", "")
         med = self.resources.get(ref) or self.resources.get(ref.replace("urn:uuid:", "Medication/"))
-        return concept_text((med or {}).get("code")) or ref
+        if med is None:
+            return f"unresolved medication ({ref})"
+        return self._medication_resource_name(med, ref)
+
+    def _medication_resource_name(self, med: dict, ref: str = "", depth: int = 0) -> str:
+        if med.get("ingredient") and depth < 2:          # MIMIC medication mixes: name = their ingredients
+            parts = []
+            for ing in med["ingredient"]:
+                iref = (ing.get("itemReference") or {}).get("reference", "")
+                sub = self.resources.get(iref)
+                if sub is not None:
+                    parts.append(self._medication_resource_name(sub, iref, depth + 1))
+                elif ing.get("itemCodeableConcept"):
+                    parts.append(concept_text(ing["itemCodeableConcept"]))
+            if parts:
+                return " + ".join(parts)
+        # MIMIC puts the drug name in an identifier; code.coding holds only the NDC number.
+        for ident in med.get("identifier", []) or []:
+            if (ident.get("system") or "").endswith("medication-name") and ident.get("value"):
+                return ident["value"]
+        code = med.get("code") or {}
+        if code.get("text") or any(c.get("display") for c in code.get("coding", []) or []):
+            return concept_text(code)
+        return concept_text(code) or ref
 
     def med_rxcui(self, mr: dict) -> str | None:
         cc = mr.get("medicationCodeableConcept")

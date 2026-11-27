@@ -100,8 +100,9 @@ def fact_claim(rec: PatientRecord, f: Fact, summary_type: str = "handoff") -> Cl
     if f.kind == "no_allergy_record":
         return Claim(section=pick("Allergies"), kind="absence", text="No allergy records found.", absent_type="AllergyIntolerance")
     if f.kind == "medication":
+        active = all(rec.is_active(rec.resources[r]) for r in f.refs)   # admission orders are completed/stopped
         return Claim(section=pick("Medications", "Active medications", "Your medicines"), kind="medication",
-                     text=f"{f.label}.", refs=hs, status="active")
+                     text=f"{f.label}.", refs=hs[-1:] if not active else hs, status="active" if active else None)
     if f.kind == "problem":
         explicit = bool(rec.resources[f.refs[0]].get("clinicalStatus"))   # MIMIC diagnoses carry no status
         return Claim(section=pick("Active problems", "Your health conditions"), kind="condition", text=f"{f.label}.",
@@ -122,7 +123,7 @@ def summarise(rec: PatientRecord, llm: LLM, summary_type: str = "handoff", sanit
     system = prompts.SYSTEMS[prompt]
     ti, to, l0 = llm.tokens_in, llm.tokens_out, llm.latency
     notes, quarantined = prepare_notes(rec, sanitise)
-    checks = safety_checks(rec, quarantined)
+    checks = safety_checks(rec, quarantined, notes)
     ver = Verifier(rec, notes, checks, lay_ok=summary_type == "patient")
     user = prompts.build_user_prompt(rec, notes, summary_type)
 

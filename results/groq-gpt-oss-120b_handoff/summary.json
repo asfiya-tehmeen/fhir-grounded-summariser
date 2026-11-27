@@ -10,7 +10,8 @@
    "latency_s": 0.003,
    "tokens_per_patient": 0,
    "med_issue_flag_rate": 0,
-   "first_pass_reject_reasons": {}
+   "first_pass_reject_reasons": {},
+   "first_pass_warnings": {}
   },
   "llm_noverify": {
    "precision": 1.0,
@@ -18,10 +19,11 @@
    "temporal_acc": 1.0,
    "claims_per_patient": 22,
    "fk_grade": 8.1,
-   "latency_s": 6.05,
-   "tokens_per_patient": 4917,
+   "latency_s": 0.0,
+   "tokens_per_patient": 0,
    "med_issue_flag_rate": 0,
-   "first_pass_reject_reasons": {}
+   "first_pass_reject_reasons": {},
+   "first_pass_warnings": {}
   },
   "llm_verify": {
    "precision": 1.0,
@@ -29,10 +31,11 @@
    "temporal_acc": 1.0,
    "claims_per_patient": 22,
    "fk_grade": 8.1,
-   "latency_s": 6.05,
-   "tokens_per_patient": 4917,
+   "latency_s": 0.0,
+   "tokens_per_patient": 0,
    "med_issue_flag_rate": 0,
-   "first_pass_reject_reasons": {}
+   "first_pass_reject_reasons": {},
+   "first_pass_warnings": {}
   },
   "llm_verify_bf": {
    "precision": 1.0,
@@ -40,16 +43,19 @@
    "temporal_acc": 1.0,
    "claims_per_patient": 22,
    "fk_grade": 8.1,
-   "latency_s": 6.05,
-   "tokens_per_patient": 4917,
+   "latency_s": 0.0,
+   "tokens_per_patient": 0,
    "backfilled_per_patient": 0,
    "med_issue_flag_rate": 0,
-   "first_pass_reject_reasons": {}
+   "first_pass_reject_reasons": {},
+   "first_pass_warnings": {}
   }
  },
- "stopped_early": "clean_000: Groq daily token limit reached for openai/gpt-oss-120b: {\"error\":{\"message\":\"Rate limit reached for model `openai/gpt-oss-120b` in organization `org_01m852nhzsevpvfg2rvn5b8xfa` service tier `on_demand` on tokens per day (TPD): Limit 200000, Used 199218, Requested 2783. Please try again in 14m24.432s. Need more tokens? Upgrade to Dev Tier today at https:/",
+ "repair_skipped": 0,
+ "stopped_early": "clean_000: Groq daily token limit reached for openai/gpt-oss-120b: {\"error\":{\"message\":\"Rate limit reached for model `openai/gpt-oss-120b` in organization `org_01m852nhzsevpvfg2rvn5b8xfa` service tier `on_demand` on tokens per day (TPD): Limit 200000, Used 198867, Requested 2969. Please try again in 13m13.152s. Need more tokens? Upgrade to Dev Tier today at https:/",
  "n_target": 17,
  "model": "groq:openai/gpt-oss-120b",
  "summary_type": "handoff",
- "sanitise": true
+ "sanitise": true,
+ "prompt": "v1"
 }

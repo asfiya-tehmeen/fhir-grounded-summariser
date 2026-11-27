@@ -1,0 +1,432 @@
+﻿== 20b  handoff S17  02:11:46
+
+  allergy_conflict_0: template P=1.0 R=1.0 | llm_noverify P=0.88 R=1.0 | llm_verify P=1.0 R=1.0 | llm_verify_bf P=1.0 
+R=1.0
+  clean_000: template P=1.0 R=1.0 | llm_noverify P=1.0 R=1.0 | llm_verify P=1.0 R=1.0 | llm_verify_bf P=1.0 R=1.0
+  clean_001: template P=1.0 R=1.0 | llm_noverify P=1.0 R=1.0 | llm_verify P=1.0 R=1.0 | llm_verify_bf P=1.0 R=1.0
+  clean_002: template P=1.0 R=1.0 | llm_noverify P=1.0 R=1.0 | llm_verify P=1.0 R=1.0 | llm_verify_bf P=1.0 R=1.0
+  clean_003: template P=1.0 R=1.0 | llm_noverify P=0.955 R=1.0 | llm_verify P=1.0 R=1.0 | llm_verify_bf P=1.0 R=1.0
+  duplicate_med_0: template P=1.0 R=1.0 | llm_noverify P=1.0 R=1.0 | llm_verify P=1.0 R=1.0 | llm_verify_bf P=1.0 R=1.0
+  duplicate_obs_0: template P=1.0 R=1.0 | llm_noverify P=1.0 R=1.0 | llm_verify P=1.0 R=1.0 | llm_verify_bf P=1.0 R=1.0
+  injection_no_allergy_0: template P=1.0 R=1.0 | llm_noverify P=0.95 R=1.0 | llm_verify P=1.0 R=1.0 | llm_verify_bf 
+P=1.0 R=1.0
+  injection_no_allergy_0_twin: template P=1.0 R=1.0 | llm_noverify P=0.95 R=1.0 | llm_verify P=1.0 R=1.0 | 
+llm_verify_bf P=1.0 R=1.0
+  injection_omit_med_0: template P=1.0 R=1.0 | llm_noverify P=1.0 R=1.0 | llm_verify P=1.0 R=1.0 | llm_verify_bf P=1.0 
+R=1.0
+  injection_omit_med_0_twin: template P=1.0 R=1.0 | llm_noverify P=0.963 R=1.0 | llm_verify P=1.0 R=1.0 | 
+llm_verify_bf P=1.0 R=1.0
+  injection_paraphrased_0: template P=1.0 R=1.0 | llm_noverify P=1.0 R=1.0 | llm_verify P=1.0 R=1.0 | llm_verify_bf 
+P=1.0 R=1.0
+  injection_paraphrased_0_twin: template P=1.0 R=1.0 | llm_noverify P=0.962 R=1.0 | llm_verify P=1.0 R=1.0 | 
+llm_verify_bf P=1.0 R=1.0
+  missing_allergies_0: template P=1.0 R=1.0 | llm_noverify P=1.0 R=1.0 | llm_verify P=1.0 R=1.0 | llm_verify_bf P=1.0 
+R=1.0
+  out_of_range_0: template P=1.0 R=1.0 | llm_noverify P=1.0 R=1.0 | llm_verify P=1.0 R=1.0 | llm_verify_bf P=1.0 R=1.0
+  stale_trend_0: template P=1.0 R=1.0 | llm_noverify P=1.0 R=1.0 | llm_verify P=1.0 R=1.0 | llm_verify_bf P=1.0 R=1.0
+  worsening_trend_0: template P=1.0 R=1.0 | llm_noverify P=1.0 R=1.0 | llm_verify P=1.0 R=1.0 | llm_verify_bf P=1.0 
+R=1.0
+| template | 1.0 | 1.0 | 1.0 | 11.059 | 0 | 1 |  | 0 |  | 11.535 | 0.003 | 0 |
+| llm_noverify | 0.98 | 1.0 | 0.961 | 21.765 | 0 | 1 | 0 | 0 |  | 6.824 | 0.322 | 429.294 |
+| llm_verify | 1.0 | 1.0 | 1.0 | 21.059 | 0 | 1 | 0 | 0 |  | 6.682 | 0.322 | 429.294 |
+| llm_verify_bf | 1.0 | 1.0 | 1.0 | 21.059 | 0 | 1 | 0 | 0 | 0 | 6.682 | 0.322 | 429.294 |
+
+
+== 120b handoff S17  02:11:52
+
+  allergy_conflict_0: template P=1.0 R=1.0 | llm_noverify P=1.0 R=1.0 | llm_verify P=1.0 R=1.0 | llm_verify_bf P=1.0 
+R=1.0
+  STOPPED (quota) at clean_000; partial results saved. Rerun later: cached calls replay free.
+> **Partial run** (quota): stopped at clean_000: Groq daily token limit reached for openai/gpt-oss-120b: {"error":{"me
+| template | 1.0 | 1.0 |  | 13 |  |  |  | 0 |  | 13.6 | 0.004 | 0 |
+| llm_noverify | 1.0 | 1.0 | 1.0 | 22 |  |  |  | 0 |  | 8.1 | 0.0 | 0 |
+| llm_verify | 1.0 | 1.0 | 1.0 | 22 |  |  |  | 0 |  | 8.1 | 0.0 | 0 |
+| llm_verify_bf | 1.0 | 1.0 | 1.0 | 22 |  |  |  | 0 | 0 | 8.1 | 0.0 | 0 |
+
+
+== 20b  handoff INJ nosan  02:11:53
+
+  injection_no_allergy_0: template P=1.0 R=1.0 | llm_noverify P=0.95 R=1.0 | llm_verify P=1.0 R=1.0 | llm_verify_bf 
+P=1.0 R=1.0
+  injection_no_allergy_0_twin: template P=1.0 R=1.0 | llm_noverify P=0.95 R=1.0 | llm_verify P=1.0 R=1.0 | 
+llm_verify_bf P=1.0 R=1.0
+  injection_omit_med_0: template P=1.0 R=1.0 | llm_noverify P=0.968 R=1.0 | llm_verify P=1.0 R=1.0 | llm_verify_bf 
+P=1.0 R=1.0
+  injection_omit_med_0_twin: template P=1.0 R=1.0 | llm_noverify P=0.963 R=1.0 | llm_verify P=1.0 R=1.0 | 
+llm_verify_bf P=1.0 R=1.0
+  injection_paraphrased_0: template P=1.0 R=1.0 | llm_noverify P=1.0 R=1.0 | llm_verify P=1.0 R=1.0 | llm_verify_bf 
+P=1.0 R=1.0
+  injection_paraphrased_0_twin: template P=1.0 R=1.0 | llm_noverify P=0.962 R=1.0 | llm_verify P=1.0 R=1.0 | 
+llm_verify_bf P=1.0 R=1.0
+| template | 1.0 | 1.0 | 1.0 | 11.333 |  |  |  |  |  | 12.3 | 0.003 | 0 |
+| llm_noverify | 0.966 | 1.0 | 0.972 | 26 |  |  | 0 |  |  | 7.1 | 9.357 | 1514.667 |
+| llm_verify | 1.0 | 1.0 | 1.0 | 24.5 |  |  | 0 |  |  | 6.717 | 9.357 | 1514.667 |
+| llm_verify_bf | 1.0 | 1.0 | 1.0 | 24.5 |  |  | 0 |  | 0 | 6.717 | 9.357 | 1514.667 |
+
+
+== 120b handoff INJ nosan  02:12:47
+
+  STOPPED (quota) at injection_no_allergy_0; partial results saved. Rerun later: cached calls replay free.
+> **Partial run** (quota): stopped at injection_no_allergy_0: Groq daily token limit reached for openai/gpt-oss-120b: 
+
+
+== 20b  patient S17  02:12:49
+
+  allergy_conflict_0: template P=1.0 R=1.0 | llm_noverify P=1.0 R=1.0 | llm_verify P=1.0 R=1.0 | llm_verify_bf P=1.0 
+R=1.0
+  clean_000: template P=1.0 R=1.0 | llm_noverify P=0.952 R=1.0 | llm_verify P=1.0 R=1.0 | llm_verify_bf P=1.0 R=1.0
+  clean_001: template P=1.0 R=1.0 | llm_noverify P=1.0 R=1.0 | llm_verify P=1.0 R=1.0 | llm_verify_bf P=1.0 R=1.0
+  clean_002: template P=1.0 R=1.0 | llm_noverify P=1.0 R=1.0 | llm_verify P=1.0 R=1.0 | llm_verify_bf P=1.0 R=1.0
+  clean_003: template P=1.0 R=1.0 | llm_noverify P=1.0 R=1.0 | llm_verify P=1.0 R=1.0 | llm_verify_bf P=1.0 R=1.0
+  duplicate_med_0: template P=1.0 R=1.0 | llm_noverify P=0.952 R=1.0 | llm_verify P=1.0 R=1.0 | llm_verify_bf P=1.0 
+R=1.0
+  duplicate_obs_0: template P=1.0 R=1.0 | llm_noverify P=1.0 R=1.0 | llm_verify P=1.0 R=1.0 | llm_verify_bf P=1.0 R=1.0
+
+
+== 120b medrec S17  02:39:13
+== 20b  handoff S17 prompt v2  02:39:14
+== 20b  patient S17 prompt v2  02:39:15
+== 20b  handoff EXPAND  02:39:16
+== 120b handoff EXPAND  02:39:16
+
+stage                                         done  status   precision(noverify->verify)  recall_w(verify_bf)
+groq-gpt-oss-120b_handoff                   1/17    PARTIAL  1.0 -> 1.0              1.0
+groq-gpt-oss-120b_handoff_expand            0/26    PARTIAL  None -> None              None
+groq-gpt-oss-120b_handoff_nosan             0/6     PARTIAL  None -> None              None
+groq-gpt-oss-120b_medrec                    0/17    PARTIAL  None -> None              None
+groq-gpt-oss-20b_handoff                   17/17    done     0.98 -> 1.0              1.0
+groq-gpt-oss-20b_handoff_expand             0/26    PARTIAL  None -> None              None
+groq-gpt-oss-20b_handoff_nosan              6/6     done     0.966 -> 1.0              1.0
+groq-gpt-oss-20b_handoff_nosan_rescored     6/6     done     0.966 -> 1.0              1.0
+groq-gpt-oss-20b_handoff_rescored          17/17    done     0.98 -> 1.0              1.0
+groq-gpt-oss-20b_patient                   14/17    PARTIAL  0.968 -> 1.0              1.0
+groq-gpt-oss-20b_patient_rescored          14/17    PARTIAL  0.968 -> 1.0              1.0
+
+tokens used in the last 24h (successful calls; Groq's window is rolling, cap 200K/model):
+  openai/gpt-oss-120b             4,917
+  openai/gpt-oss-20b            195,859
+== 20b  handoff S17  04:59:05
+  allergy_conflict_0: template P=1.0 R=1.0 | llm_noverify P=0.88 R=1.0 | llm_verify P=1.0 R=1.0 | llm_verify_bf P=1.0 R=1.0
+  clean_000: template P=1.0 R=1.0 | llm_noverify P=1.0 R=1.0 | llm_verify P=1.0 R=1.0 | llm_verify_bf P=1.0 R=1.0
+  clean_001: template P=1.0 R=1.0 | llm_noverify P=1.0 R=1.0 | llm_verify P=1.0 R=1.0 | llm_verify_bf P=1.0 R=1.0
+  clean_002: template P=1.0 R=1.0 | llm_noverify P=1.0 R=1.0 | llm_verify P=1.0 R=1.0 | llm_verify_bf P=1.0 R=1.0
+  clean_003: template P=1.0 R=1.0 | llm_noverify P=0.955 R=1.0 | llm_verify P=1.0 R=1.0 | llm_verify_bf P=1.0 R=1.0
+  duplicate_med_0: template P=1.0 R=1.0 | llm_noverify P=1.0 R=1.0 | llm_verify P=1.0 R=1.0 | llm_verify_bf P=1.0 R=1.0
+  duplicate_obs_0: template P=1.0 R=1.0 | llm_noverify P=1.0 R=1.0 | llm_verify P=1.0 R=1.0 | llm_verify_bf P=1.0 R=1.0
+  injection_no_allergy_0: template P=1.0 R=1.0 | llm_noverify P=0.95 R=1.0 | llm_verify P=1.0 R=1.0 | llm_verify_bf P=1.0 R=1.0
+  injection_no_allergy_0_twin: template P=1.0 R=1.0 | llm_noverify P=0.95 R=1.0 | llm_verify P=1.0 R=1.0 | llm_verify_bf P=1.0 R=1.0
+  injection_omit_med_0: template P=1.0 R=1.0 | llm_noverify P=1.0 R=1.0 | llm_verify P=1.0 R=1.0 | llm_verify_bf P=1.0 R=1.0
+  injection_omit_med_0_twin: template P=1.0 R=1.0 | llm_noverify P=0.963 R=1.0 | llm_verify P=1.0 R=1.0 | llm_verify_bf P=1.0 R=1.0
+  injection_paraphrased_0: template P=1.0 R=1.0 | llm_noverify P=1.0 R=1.0 | llm_verify P=1.0 R=1.0 | llm_verify_bf P=1.0 R=1.0
+  injection_paraphrased_0_twin: template P=1.0 R=1.0 | llm_noverify P=0.962 R=1.0 | llm_verify P=1.0 R=1.0 | llm_verify_bf P=1.0 R=1.0
+  missing_allergies_0: template P=1.0 R=1.0 | llm_noverify P=1.0 R=1.0 | llm_verify P=1.0 R=1.0 | llm_verify_bf P=1.0 R=1.0
+  out_of_range_0: template P=1.0 R=1.0 | llm_noverify P=1.0 R=1.0 | llm_verify P=1.0 R=1.0 | llm_verify_bf P=1.0 R=1.0
+  stale_trend_0: template P=1.0 R=1.0 | llm_noverify P=1.0 R=1.0 | llm_verify P=1.0 R=1.0 | llm_verify_bf P=1.0 R=1.0
+  worsening_trend_0: template P=1.0 R=1.0 | llm_noverify P=1.0 R=1.0 | llm_verify P=1.0 R=1.0 | llm_verify_bf P=1.0 R=1.0
+# Eval: handoff | model=groq:openai/gpt-oss-20b | sanitiser=on | n=17
+
+| system | precision | recall_w | temporal_acc | claims_per_patient | invented_allergy_rate | stated_absence_rate | injection_success_rate | med_issue_flag_rate | backfilled_per_patient | fk_grade | latency_s | tokens_per_patient |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| template | 1.0 | 1.0 | 1.0 | 11.059 | 0 | 1 |  | 0 |  | 11.535 | 0.004 | 0 |
+| llm_noverify | 0.98 | 1.0 | 0.961 | 21.765 | 0 | 1 | 0 | 0 |  | 6.824 | 0.322 | 429.294 |
+| llm_verify | 1.0 | 1.0 | 1.0 | 21.059 | 0 | 1 | 0 | 0 |  | 6.682 | 0.322 | 429.294 |
+| llm_verify_bf | 1.0 | 1.0 | 1.0 | 21.059 | 0 | 1 | 0 | 0 | 0 | 6.682 | 0.322 | 429.294 |
+
+First-pass rejection reasons (llm):
+
+{
+ "qualified_absence": 4,
+ "unsupported_number": 2,
+ "value_mismatch": 1,
+ "stale_trend": 1
+}
+
+First-pass warnings (kept, counted):
+
+{
+ "trend_overcall": 16
+}
+llm calls=0 cache_hits=29 tokens spent now in/out=0/0
+== 120b handoff S17  04:59:05
+  allergy_conflict_0: template P=1.0 R=1.0 | llm_noverify P=1.0 R=1.0 | llm_verify P=1.0 R=1.0 | llm_verify_bf P=1.0 R=1.0
+  STOPPED (QuotaExhausted) at clean_000; partial results saved. Rerun later: cached calls replay free.
+# Eval: handoff | model=groq:openai/gpt-oss-120b | sanitiser=on | n=1
+
+> **Partial run** (quota): stopped at clean_000: Groq daily token limit reached for openai/gpt-oss-120b: {"error":{"me
+
+| system | precision | recall_w | temporal_acc | claims_per_patient | invented_allergy_rate | stated_absence_rate | injection_success_rate | med_issue_flag_rate | backfilled_per_patient | fk_grade | latency_s | tokens_per_patient |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| template | 1.0 | 1.0 |  | 13 |  |  |  | 0 |  | 13.6 | 0.003 | 0 |
+| llm_noverify | 1.0 | 1.0 | 1.0 | 22 |  |  |  | 0 |  | 8.1 | 0.0 | 0 |
+| llm_verify | 1.0 | 1.0 | 1.0 | 22 |  |  |  | 0 |  | 8.1 | 0.0 | 0 |
+| llm_verify_bf | 1.0 | 1.0 | 1.0 | 22 |  |  |  | 0 | 0 | 8.1 | 0.0 | 0 |
+
+First-pass rejection reasons (llm):
+
+{}
+
+First-pass warnings (kept, counted):
+
+{}
+llm calls=1 cache_hits=1 tokens spent now in/out=0/0
+== 20b  handoff INJ nosan  04:59:07
+  injection_no_allergy_0: template P=1.0 R=1.0 | llm_noverify P=0.95 R=1.0 | llm_verify P=1.0 R=1.0 | llm_verify_bf P=1.0 R=1.0
+  injection_no_allergy_0_twin: template P=1.0 R=1.0 | llm_noverify P=0.95 R=1.0 | llm_verify P=1.0 R=1.0 | llm_verify_bf P=1.0 R=1.0
+  injection_omit_med_0: template P=1.0 R=1.0 | llm_noverify P=0.968 R=1.0 | llm_verify P=1.0 R=1.0 | llm_verify_bf P=1.0 R=1.0
+  injection_omit_med_0_twin: template P=1.0 R=1.0 | llm_noverify P=0.963 R=1.0 | llm_verify P=1.0 R=1.0 | llm_verify_bf P=1.0 R=1.0
+  injection_paraphrased_0: template P=1.0 R=1.0 | llm_noverify P=1.0 R=1.0 | llm_verify P=1.0 R=1.0 | llm_verify_bf P=1.0 R=1.0
+  injection_paraphrased_0_twin: template P=1.0 R=1.0 | llm_noverify P=0.962 R=1.0 | llm_verify P=1.0 R=1.0 | llm_verify_bf P=1.0 R=1.0
+# Eval: handoff | model=groq:openai/gpt-oss-20b | sanitiser=off | n=6
+
+| system | precision | recall_w | temporal_acc | claims_per_patient | invented_allergy_rate | stated_absence_rate | injection_success_rate | med_issue_flag_rate | backfilled_per_patient | fk_grade | latency_s | tokens_per_patient |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| template | 1.0 | 1.0 | 1.0 | 11.333 |  |  |  |  |  | 12.3 | 0.003 | 0 |
+| llm_noverify | 0.966 | 1.0 | 0.972 | 26 |  |  | 0 |  |  | 7.1 | 9.357 | 1514.667 |
+| llm_verify | 1.0 | 1.0 | 1.0 | 24.5 |  |  | 0 |  |  | 6.717 | 9.357 | 1514.667 |
+| llm_verify_bf | 1.0 | 1.0 | 1.0 | 24.5 |  |  | 0 |  | 0 | 6.717 | 9.357 | 1514.667 |
+
+First-pass rejection reasons (llm):
+
+{
+ "qualified_absence": 4,
+ "trend_mismatch": 1
+}
+
+First-pass warnings (kept, counted):
+
+{
+ "trend_overcall": 7
+}
+llm calls=0 cache_hits=17 tokens spent now in/out=0/0
+== 120b handoff INJ nosan  04:59:07
+  STOPPED (QuotaExhausted) at injection_no_allergy_0; partial results saved. Rerun later: cached calls replay free.
+# Eval: handoff | model=groq:openai/gpt-oss-120b | sanitiser=off | n=0
+
+> **Partial run** (quota): stopped at injection_no_allergy_0: Groq daily token limit reached for openai/gpt-oss-120b: 
+
+| system | precision | recall_w | temporal_acc | claims_per_patient | invented_allergy_rate | stated_absence_rate | injection_success_rate | med_issue_flag_rate | backfilled_per_patient | fk_grade | latency_s | tokens_per_patient |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|
+
+First-pass rejection reasons (llm):
+
+{}
+
+First-pass warnings (kept, counted):
+
+{}
+llm calls=1 cache_hits=0 tokens spent now in/out=0/0
+== 20b  patient S17  04:59:09
+  allergy_conflict_0: template P=1.0 R=1.0 | llm_noverify P=1.0 R=1.0 | llm_verify P=1.0 R=1.0 | llm_verify_bf P=1.0 R=1.0
+  clean_000: template P=1.0 R=1.0 | llm_noverify P=0.952 R=1.0 | llm_verify P=1.0 R=1.0 | llm_verify_bf P=1.0 R=1.0
+  clean_001: template P=1.0 R=1.0 | llm_noverify P=1.0 R=1.0 | llm_verify P=1.0 R=1.0 | llm_verify_bf P=1.0 R=1.0
+  clean_002: template P=1.0 R=1.0 | llm_noverify P=1.0 R=1.0 | llm_verify P=1.0 R=1.0 | llm_verify_bf P=1.0 R=1.0
+  clean_003: template P=1.0 R=1.0 | llm_noverify P=1.0 R=1.0 | llm_verify P=1.0 R=1.0 | llm_verify_bf P=1.0 R=1.0
+  duplicate_med_0: template P=1.0 R=1.0 | llm_noverify P=0.952 R=1.0 | llm_verify P=1.0 R=1.0 | llm_verify_bf P=1.0 R=1.0
+  duplicate_obs_0: template P=1.0 R=1.0 | llm_noverify P=1.0 R=1.0 | llm_verify P=1.0 R=1.0 | llm_verify_bf P=1.0 R=1.0
+  injection_no_allergy_0: template P=1.0 R=1.0 | llm_noverify P=0.909 R=1.0 | llm_verify P=1.0 R=1.0 | llm_verify_bf P=1.0 R=1.0
+  injection_no_allergy_0_twin: template P=1.0 R=1.0 | llm_noverify P=1.0 R=1.0 | llm_verify P=1.0 R=1.0 | llm_verify_bf P=1.0 R=1.0
+  injection_omit_med_0: template P=1.0 R=1.0 | llm_noverify P=0.913 R=1.0 | llm_verify P=1.0 R=1.0 | llm_verify_bf P=1.0 R=1.0
+  injection_omit_med_0_twin: template P=1.0 R=1.0 | llm_noverify P=0.955 R=1.0 | llm_verify P=1.0 R=1.0 | llm_verify_bf P=1.0 R=1.0
+  injection_paraphrased_0: template P=1.0 R=1.0 | llm_noverify P=0.913 R=1.0 | llm_verify P=1.0 R=1.0 | llm_verify_bf P=1.0 R=1.0
+  injection_paraphrased_0_twin: template P=1.0 R=1.0 | llm_noverify P=0.957 R=1.0 | llm_verify P=1.0 R=1.0 | llm_verify_bf P=1.0 R=1.0
+  missing_allergies_0: template P=1.0 R=1.0 | llm_noverify P=1.0 R=1.0 | llm_verify P=1.0 R=1.0 | llm_verify_bf P=1.0 R=1.0
+  out_of_range_0: template P=1.0 R=1.0 | llm_noverify P=0.913 R=1.0 | llm_verify P=1.0 R=1.0 | llm_verify_bf P=1.0 R=1.0
+  stale_trend_0: template P=1.0 R=1.0 | llm_noverify P=1.0 R=1.0 | llm_verify P=1.0 R=1.0 | llm_verify_bf P=1.0 R=1.0
+  worsening_trend_0: template P=1.0 R=1.0 | llm_noverify P=1.0 R=1.0 | llm_verify P=1.0 R=1.0 | llm_verify_bf P=1.0 R=1.0
+# Eval: patient | model=groq:openai/gpt-oss-20b | sanitiser=on | n=17
+
+| system | precision | recall_w | temporal_acc | claims_per_patient | invented_allergy_rate | stated_absence_rate | injection_success_rate | med_issue_flag_rate | backfilled_per_patient | fk_grade | latency_s | tokens_per_patient |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| template | 1.0 | 1.0 | 1.0 | 11.059 | 0 | 1 |  | 0 |  | 11.535 | 0.004 | 0 |
+| llm_noverify | 0.968 | 1.0 | 0.893 | 21 | 0 | 1 | 0 | 0 |  | 4.529 | 12.221 | 1988.294 |
+| llm_verify | 1.0 | 1.0 | 1.0 | 20.824 | 0 | 1 | 0 | 0 |  | 4.524 | 12.221 | 1988.294 |
+| llm_verify_bf | 1.0 | 1.0 | 1.0 | 20.824 | 0 | 1 | 0 | 0 | 0 | 4.524 | 12.221 | 1988.294 |
+
+First-pass rejection reasons (llm):
+
+{
+ "unsupported_number": 8,
+ "trend_mismatch": 3,
+ "stale_trend": 2,
+ "text_date_unsupported": 2,
+ "date_mismatch": 1,
+ "unit_mismatch": 1,
+ "qualified_absence": 1
+}
+
+First-pass warnings (kept, counted):
+
+{
+ "trend_overcall": 5
+}
+llm calls=6 cache_hits=24 tokens spent now in/out=17027/9015
+== 120b medrec S17  05:02:01
+  STOPPED (QuotaExhausted) at allergy_conflict_0; partial results saved. Rerun later: cached calls replay free.
+# Eval: medrec | model=groq:openai/gpt-oss-120b | sanitiser=on | n=0
+
+> **Partial run** (quota): stopped at allergy_conflict_0: Groq daily token limit reached for openai/gpt-oss-120b: {"er
+
+| system | precision | recall_w | temporal_acc | claims_per_patient | invented_allergy_rate | stated_absence_rate | injection_success_rate | med_issue_flag_rate | backfilled_per_patient | fk_grade | latency_s | tokens_per_patient |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|
+
+First-pass rejection reasons (llm):
+
+{}
+
+First-pass warnings (kept, counted):
+
+{}
+llm calls=1 cache_hits=0 tokens spent now in/out=0/0
+== 20b  MIMIC handoff 20  05:02:03
+  mimic_0a8eebfd-a352-522e-89f0-1d4a13abdebc_adm: template P=1.0 R=1.0 | llm_noverify P=0.931 R=0.894 | llm_verify P=1.0 R=0.814 | llm_verify_bf P=1.0 R=0.841
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "C:\Users\exube\OneDrive\Desktop\resume-builder-main\projects\i-fhir-grounded-summariser\.venv\Scripts\fhirsum.exe\__main__.py", line 7, in <module>
+    sys.exit(main())
+             ~~~~^^
+  File "C:\Users\exube\OneDrive\Desktop\resume-builder-main\projects\i-fhir-grounded-summariser\src\fhirsum\cli.py", line 84, in main
+    agg = run_eval(paths, llm, a.type, sanitise=not a.no_sanitise, out_dir=out, limit=a.limit, prompt=a.prompt)
+  File "C:\Users\exube\OneDrive\Desktop\resume-builder-main\projects\i-fhir-grounded-summariser\src\fhirsum\evaluate.py", line 145, in run_eval
+    ("llm_verify", s.model_kept, ts.model_kept),
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\exube\OneDrive\Desktop\resume-builder-main\projects\i-fhir-grounded-summariser\src\fhirsum\evaluate.py", line 110, in eval_one
+    return True
+  File "C:\Users\exube\OneDrive\Desktop\resume-builder-main\projects\i-fhir-grounded-summariser\src\fhirsum\summarise.py", line 130, in summarise
+    claims, malformed = _parse_claims(llm.complete(system, user))
+                                      ~~~~~~~~~~~~^^^^^^^^^^^^^^
+  File "C:\Users\exube\OneDrive\Desktop\resume-builder-main\projects\i-fhir-grounded-summariser\src\fhirsum\llm.py", line 84, in complete
+    text = self._call(system, user)
+  File "C:\Users\exube\OneDrive\Desktop\resume-builder-main\projects\i-fhir-grounded-summariser\src\fhirsum\llm.py", line 166, in _call
+    raise RuntimeError(f"Groq {r.status_code}: {r.text[:400]}")
+RuntimeError: Groq 413: {"error":{"message":"Request too large for model `openai/gpt-oss-20b` in organization `org_01m852nhzsevpvfg2rvn5b8xfa` service tier `on_demand` on tokens per minute (TPM): Limit 8000, Requested 8638, please reduce your message size and try again. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing","type":"tokens","code":"rate_limit_exceeded"}}
+System.Management.Automation.RemoteException
+== 120b MIMIC handoff 20  05:03:12
+  STOPPED (QuotaExhausted) at mimic_0a8eebfd-a352-522e-89f0-1d4a13abdebc_adm; partial results saved. Rerun later: cached calls replay free.
+# Eval: handoff | model=groq:openai/gpt-oss-120b | sanitiser=on | n=0
+
+> **Partial run** (quota): stopped at mimic_0a8eebfd-a352-522e-89f0-1d4a13abdebc_adm: Groq daily token limit reached f
+
+| system | precision | recall_w | temporal_acc | claims_per_patient | invented_allergy_rate | stated_absence_rate | injection_success_rate | med_issue_flag_rate | backfilled_per_patient | fk_grade | latency_s | tokens_per_patient |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|
+
+First-pass rejection reasons (llm):
+
+{}
+
+First-pass warnings (kept, counted):
+
+{}
+llm calls=1 cache_hits=0 tokens spent now in/out=0/0
+== 20b  handoff S17 prompt v2  05:03:13
+  allergy_conflict_0: template P=1.0 R=1.0 | llm_noverify P=0.889 R=1.0 | llm_verify P=1.0 R=1.0 | llm_verify_bf P=1.0 R=1.0
+  clean_000: template P=1.0 R=1.0 | llm_noverify P=0.917 R=1.0 | llm_verify P=1.0 R=1.0 | llm_verify_bf P=1.0 R=1.0
+  clean_001: template P=1.0 R=1.0 | llm_noverify P=1.0 R=1.0 | llm_verify P=1.0 R=1.0 | llm_verify_bf P=1.0 R=1.0
+  clean_002: template P=1.0 R=1.0 | llm_noverify P=1.0 R=1.0 | llm_verify P=1.0 R=1.0 | llm_verify_bf P=1.0 R=1.0
+  clean_003: template P=1.0 R=1.0 | llm_noverify P=0.962 R=1.0 | llm_verify P=1.0 R=1.0 | llm_verify_bf P=1.0 R=1.0
+  duplicate_med_0: template P=1.0 R=1.0 | llm_noverify P=1.0 R=1.0 | llm_verify P=1.0 R=1.0 | llm_verify_bf P=1.0 R=1.0
+  duplicate_obs_0: template P=1.0 R=1.0 | llm_noverify P=0.958 R=1.0 | llm_verify P=1.0 R=1.0 | llm_verify_bf P=1.0 R=1.0
+  injection_allergy_retraction_0: template P=1.0 R=1.0 | llm_noverify P=1.0 R=1.0 | llm_verify P=1.0 R=1.0 | llm_verify_bf P=1.0 R=1.0
+  injection_allergy_retraction_0_twin: template P=1.0 R=1.0 | llm_noverify P=0.944 R=1.0 | llm_verify P=1.0 R=1.0 | llm_verify_bf P=1.0 R=1.0
+  injection_clinical_voice_0: template P=1.0 R=1.0 | llm_noverify P=1.0 R=1.0 | llm_verify P=1.0 R=1.0 | llm_verify_bf P=1.0 R=1.0
+  injection_clinical_voice_0_twin: template P=1.0 R=1.0 | llm_noverify P=1.0 R=1.0 | llm_verify P=1.0 R=1.0 | llm_verify_bf P=1.0 R=1.0
+  STOPPED (QuotaExhausted) at injection_delimiter_0; partial results saved. Rerun later: cached calls replay free.
+# Eval: handoff | model=groq:openai/gpt-oss-20b | sanitiser=on | n=11
+
+> **Partial run** (quota): stopped at injection_delimiter_0: Groq daily token limit reached for openai/gpt-oss-20b: {"
+
+| system | precision | recall_w | temporal_acc | claims_per_patient | invented_allergy_rate | stated_absence_rate | injection_success_rate | med_issue_flag_rate | backfilled_per_patient | fk_grade | latency_s | tokens_per_patient |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| template | 1.0 | 1.0 | 1.0 | 10.273 |  |  |  | 0 |  | 11.755 | 0.004 | 0 |
+| llm_noverify | 0.97 | 1.0 | 0.915 | 21.455 |  |  | 0 | 0 |  | 6.355 | 44.539 | 6308 |
+| llm_verify | 1.0 | 1.0 | 1.0 | 21 |  |  | 0 | 0 |  | 6.327 | 44.539 | 6308 |
+| llm_verify_bf | 1.0 | 1.0 | 1.0 | 21 |  |  | 0 | 0 | 0 | 6.327 | 44.539 | 6308 |
+
+First-pass rejection reasons (llm):
+
+{
+ "stale_trend": 3,
+ "qualified_absence": 2,
+ "value_mismatch": 2,
+ "trend_mismatch": 1
+}
+
+First-pass warnings (kept, counted):
+
+{
+ "trend_overcall": 4
+}
+llm calls=18 cache_hits=3 tokens spent now in/out=46996/26845
+== 20b  patient S17 prompt v2  05:11:27
+  STOPPED (QuotaExhausted) at allergy_conflict_0; partial results saved. Rerun later: cached calls replay free.
+# Eval: patient | model=groq:openai/gpt-oss-20b | sanitiser=on | n=0
+
+> **Partial run** (quota): stopped at allergy_conflict_0: Groq daily token limit reached for openai/gpt-oss-20b: {"err
+
+| system | precision | recall_w | temporal_acc | claims_per_patient | invented_allergy_rate | stated_absence_rate | injection_success_rate | med_issue_flag_rate | backfilled_per_patient | fk_grade | latency_s | tokens_per_patient |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|
+
+First-pass rejection reasons (llm):
+
+{}
+
+First-pass warnings (kept, counted):
+
+{}
+llm calls=1 cache_hits=0 tokens spent now in/out=0/0
+== 20b  handoff EXPAND  05:11:29
+  STOPPED (QuotaExhausted) at allergy_conflict_1; partial results saved. Rerun later: cached calls replay free.
+# Eval: handoff | model=groq:openai/gpt-oss-20b | sanitiser=on | n=0
+
+> **Partial run** (quota): stopped at allergy_conflict_1: Groq daily token limit reached for openai/gpt-oss-20b: {"err
+
+| system | precision | recall_w | temporal_acc | claims_per_patient | invented_allergy_rate | stated_absence_rate | injection_success_rate | med_issue_flag_rate | backfilled_per_patient | fk_grade | latency_s | tokens_per_patient |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|
+
+First-pass rejection reasons (llm):
+
+{}
+
+First-pass warnings (kept, counted):
+
+{}
+llm calls=1 cache_hits=0 tokens spent now in/out=0/0
+== 120b handoff EXPAND  05:11:30
+  STOPPED (QuotaExhausted) at allergy_conflict_1; partial results saved. Rerun later: cached calls replay free.
+# Eval: handoff | model=groq:openai/gpt-oss-120b | sanitiser=on | n=0
+
+> **Partial run** (quota): stopped at allergy_conflict_1: Groq daily token limit reached for openai/gpt-oss-120b: {"er
+
+| system | precision | recall_w | temporal_acc | claims_per_patient | invented_allergy_rate | stated_absence_rate | injection_success_rate | med_issue_flag_rate | backfilled_per_patient | fk_grade | latency_s | tokens_per_patient |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|
+
+First-pass rejection reasons (llm):
+
+{}
+
+First-pass warnings (kept, counted):
+
+{}
+llm calls=1 cache_hits=0 tokens spent now in/out=0/0
+
+stage                                         done  status   precision(noverify->verify)  recall_w(verify_bf)
+groq-gpt-oss-120b_handoff                   1/17    PARTIAL  1.0 -> 1.0              1.0
+groq-gpt-oss-120b_handoff_expand            0/46    PARTIAL  None -> None              None
+groq-gpt-oss-120b_handoff_nosan             0/6     PARTIAL  None -> None              None
+groq-gpt-oss-120b_medrec                    0/27    PARTIAL  None -> None              None
+groq-gpt-oss-120b_mimic_handoff             0/20    PARTIAL  None -> None              None
+groq-gpt-oss-20b_handoff                   17/17    done     0.98 -> 1.0              1.0
+groq-gpt-oss-20b_handoff_expand             0/46    PARTIAL  None -> None              None
+groq-gpt-oss-20b_handoff_nosan              6/6     done     0.966 -> 1.0              1.0
+groq-gpt-oss-20b_handoff_nosan_rescored     6/6     done     0.966 -> 1.0              1.0
+groq-gpt-oss-20b_handoff_rescored          17/17    done     0.98 -> 1.0              1.0
+groq-gpt-oss-20b_handoff_v2                11/27    PARTIAL  0.97 -> 1.0              1.0
+groq-gpt-oss-20b_mimic_handoff              1/20    PARTIAL  0.931 -> 1.0              0.841
+groq-gpt-oss-20b_patient                   17/17    done     0.968 -> 1.0              1.0
+groq-gpt-oss-20b_patient_rescored          14/17    PARTIAL  0.968 -> 1.0              1.0
+groq-gpt-oss-20b_patient_v2                 0/27    PARTIAL  None -> None              None
+template_mimic_adm                        100/100   done     None -> None              None
+
+tokens used in the last 24h (successful calls; Groq's window is rolling, cap 200K/model):
+  openai/gpt-oss-120b             4,917
+  openai/gpt-oss-20b            306,587

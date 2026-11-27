@@ -26,13 +26,23 @@ _RX = [re.compile(p, re.I) for p in INJECTION_PATTERNS]
 _SENT = re.compile(r"(?<=[.!?\n])\s+")
 
 
+_INVISIBLE = re.compile("[​-‏⁠-⁤﻿­]")   # zero-width, joiners, BOM, soft hyphen
+
+
+def normalise(text: str) -> str:
+    """Undo cheap obfuscation before matching: NFKC folds look-alike/full-width characters; invisible characters
+    are dropped. Applied to the text the model sees too (removing invisible characters loses nothing clinical)."""
+    import unicodedata
+    return _INVISIBLE.sub("", unicodedata.normalize("NFKC", text))
+
+
 def find_injections(text: str) -> list[str]:
-    return [s.strip() for s in _SENT.split(text) if any(rx.search(s) for rx in _RX)]
+    return [s.strip() for s in _SENT.split(normalise(text)) if any(rx.search(s) for rx in _RX)]
 
 
 def quarantine(text: str) -> tuple[str, list[str]]:
-    spans = find_injections(text)
-    clean = text
+    clean = normalise(text)
+    spans = find_injections(clean)
     for s in spans:
         clean = clean.replace(s, "[WITHHELD: instruction-like text removed by sanitiser]")
     return clean, spans

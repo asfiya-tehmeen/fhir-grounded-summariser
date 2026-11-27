@@ -20,7 +20,7 @@ from .summarise import summarise, template_summary
 
 load_env()
 STATIC = Path(__file__).parent / "static"
-DATA_DIRS = [Path(p) for p in os.environ.get("FHIRSUM_DATA_DIRS", "data/generated;data/synthea;data/mimic").split(";")]
+DATA_DIRS = [Path(p) for p in os.environ.get("FHIRSUM_DATA_DIRS", "data/generated;data/synthea;data/mimic_adm;data/mimic").split(";")]
 app = FastAPI(title="FHIR-grounded summariser")
 _llms: dict[str, object] = {}
 

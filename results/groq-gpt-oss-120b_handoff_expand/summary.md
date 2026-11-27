@@ -8,3 +8,7 @@
 First-pass rejection reasons (llm):
 
 {}
+
+First-pass warnings (kept, counted):
+
+{}

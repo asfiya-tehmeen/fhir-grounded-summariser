@@ -21,8 +21,16 @@ CACHE_DIR = Path(os.environ.get("FHIRSUM_CACHE", "data/cache/llm"))
 USAGE_LOG = CACHE_DIR.parent / "usage.jsonl"
 
 
-class QuotaExhausted(RuntimeError):
-    """Daily quota hit: stop the run cleanly (cached calls are kept, rerun resumes for free)."""
+class StopRun(RuntimeError):
+    """Stop the evaluation cleanly: partial results are saved, cached calls are kept, a rerun resumes for free."""
+
+
+class QuotaExhausted(StopRun):
+    """Daily quota hit."""
+
+
+class ProviderUnavailable(StopRun):
+    """Network or server errors persisted through retries."""
 
 
 class CacheMiss(QuotaExhausted):
@@ -118,8 +126,16 @@ class GroqLLM(LLM):
             body["reasoning_effort"] = os.environ.get("GROQ_REASONING_EFFORT", "low")
         last = ""
         for attempt in range(8):
-            r = httpx.post(f"{self.base}/chat/completions", timeout=180,
-                           headers={"Authorization": f"Bearer {self.key}"}, json=body)
+            try:
+                r = httpx.post(f"{self.base}/chat/completions", timeout=180,
+                               headers={"Authorization": f"Bearer {self.key}"}, json=body)
+            except (httpx.TimeoutException, httpx.TransportError) as e:
+                log_usage(provider="groq", model=self.model, status=None, attempt=attempt, max_tokens=body["max_tokens"],
+                          prompt_tokens=None, completion_tokens=None, error=f"{type(e).__name__}: {e}"[:160])
+                last = f"{type(e).__name__}: {e}"
+                if attempt >= 3:
+                    raise ProviderUnavailable(f"Groq unreachable after {attempt + 1} attempts: {last}")
+                time.sleep(10 * (attempt + 1)); continue
             u = r.json().get("usage", {}) if r.status_code == 200 else {}
             log_usage(provider="groq", model=self.model, status=r.status_code, attempt=attempt, max_tokens=body["max_tokens"],
                       prompt_tokens=u.get("prompt_tokens"), completion_tokens=u.get("completion_tokens"),
@@ -141,6 +157,11 @@ class GroqLLM(LLM):
                 time.sleep(min(90, wait + 1)); continue
             if r.status_code == 400 and "json_validate_failed" in r.text:
                 body.pop("response_format", None); last = r.text[:300]; continue   # retry without JSON mode
+            if r.status_code >= 500:
+                last = f"Groq {r.status_code}: {r.text[:200]}"
+                if attempt >= 3:
+                    raise ProviderUnavailable(last)
+                time.sleep(10 * (attempt + 1)); continue
             if r.status_code >= 400:
                 raise RuntimeError(f"Groq {r.status_code}: {r.text[:400]}")
             j = r.json(); u = j.get("usage", {})

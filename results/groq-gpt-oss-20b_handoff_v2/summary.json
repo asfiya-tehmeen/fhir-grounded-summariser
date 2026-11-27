@@ -1,0 +1,93 @@
+{
+ "n_patients": 11,
+ "systems": {
+  "template": {
+   "precision": 1.0,
+   "recall_w": 1.0,
+   "temporal_acc": 1.0,
+   "claims_per_patient": 10.273,
+   "fk_grade": 11.755,
+   "latency_s": 0.004,
+   "tokens_per_patient": 0,
+   "med_issue_flag_rate": 0,
+   "first_pass_reject_reasons": {},
+   "first_pass_warnings": {}
+  },
+  "llm_noverify": {
+   "precision": 0.97,
+   "recall_w": 1.0,
+   "temporal_acc": 0.915,
+   "claims_per_patient": 21.455,
+   "fk_grade": 6.355,
+   "latency_s": 44.539,
+   "tokens_per_patient": 6308,
+   "injection_success_rate": 0,
+   "injection_cases": 2,
+   "repeats_note_falsehood_rate": 1,
+   "med_issue_flag_rate": 0,
+   "first_pass_reject_reasons": {
+    "stale_trend": 3,
+    "qualified_absence": 2,
+    "value_mismatch": 2,
+    "trend_mismatch": 1
+   },
+   "first_pass_warnings": {
+    "trend_overcall": 4
+   }
+  },
+  "llm_verify": {
+   "precision": 1.0,
+   "recall_w": 1.0,
+   "temporal_acc": 1.0,
+   "claims_per_patient": 21,
+   "fk_grade": 6.327,
+   "latency_s": 44.539,
+   "tokens_per_patient": 6308,
+   "injection_success_rate": 0,
+   "injection_cases": 2,
+   "repeats_note_falsehood_rate": 0.5,
+   "med_issue_flag_rate": 0,
+   "first_pass_reject_reasons": {
+    "stale_trend": 3,
+    "qualified_absence": 2,
+    "value_mismatch": 2,
+    "trend_mismatch": 1
+   },
+   "first_pass_warnings": {
+    "trend_overcall": 4
+   }
+  },
+  "llm_verify_bf": {
+   "precision": 1.0,
+   "recall_w": 1.0,
+   "temporal_acc": 1.0,
+   "claims_per_patient": 21,
+   "fk_grade": 6.327,
+   "latency_s": 44.539,
+   "tokens_per_patient": 6308,
+   "injection_success_rate": 0,
+   "injection_cases": 2,
+   "repeats_note_falsehood_rate": 0.5,
+   "backfilled_per_patient": 0,
+   "med_issue_flag_rate": 0,
+   "first_pass_reject_reasons": {
+    "stale_trend": 3,
+    "qualified_absence": 2,
+    "value_mismatch": 2,
+    "trend_mismatch": 1
+   },
+   "first_pass_warnings": {
+    "trend_overcall": 4
+   }
+  }
+ },
+ "repair_skipped": 0,
+ "conflict_flagged_rate": 1,
+ "injected_cases": 2,
+ "stopped_early": "injection_delimiter_0: Groq daily token limit reached for openai/gpt-oss-20b: {\"error\":{\"message\":\"Rate limit reached for model `openai/gpt-oss-20b` in organization `org_01m852nhzsevpvfg2rvn5b8xfa` service tier `on_demand` on tokens per day (TPD): Limit 200000, Used 198271, Requested 5045. Please try again in 23m52.512s. Need more tokens? Upgrade to Dev Tier today at https://",
+ "n_target": 27,
+ "model": "groq:openai/gpt-oss-20b",
+ "summary_type": "handoff",
+ "sanitise": true,
+ "prompt": "v2"
+}

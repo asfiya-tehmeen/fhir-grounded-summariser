@@ -1,0 +1,23 @@
+{
+ "n_patients": 100,
+ "systems": {
+  "template": {
+   "precision": 1.0,
+   "recall_w": 1.0,
+   "temporal_acc": 1.0,
+   "claims_per_patient": 81.34,
+   "fk_grade": 8.793,
+   "latency_s": 0.061,
+   "tokens_per_patient": 0,
+   "first_pass_reject_reasons": {},
+   "first_pass_warnings": {}
+  }
+ },
+ "repair_skipped": 0,
+ "stopped_early": null,
+ "n_target": 100,
+ "model": "none:",
+ "summary_type": "handoff",
+ "sanitise": true,
+ "prompt": "v1"
+}

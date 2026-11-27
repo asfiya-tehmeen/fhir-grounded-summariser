@@ -105,3 +105,24 @@ def test_offline_mode_never_calls_api_and_skips_uncached_repair(tmp_path, monkey
     (tmp_path / f"{key}.json").write_text(json.dumps({"text": json.dumps(bad)}))
     s = summarise(rec, f)
     assert s.repair_skipped and s.dropped
+
+
+def test_network_errors_stop_cleanly_and_partial_results_are_saved(tmp_path, monkeypatch):
+    import httpx
+    import fhirsum.llm as llm_mod
+    from fhirsum.llm import GroqLLM, ProviderUnavailable
+    monkeypatch.setenv("GROQ_API_KEY", "test-key")
+    monkeypatch.setattr(llm_mod, "CACHE_DIR", tmp_path / "cache")
+    monkeypatch.setattr(llm_mod, "USAGE_LOG", tmp_path / "usage.jsonl")
+    monkeypatch.setattr(llm_mod.time, "sleep", lambda s: None)
+    def boom(*a, **k):
+        raise httpx.ConnectTimeout("timed out")
+    monkeypatch.setattr(llm_mod.httpx, "post", boom)
+    g = GroqLLM()
+    import pytest
+    with pytest.raises(ProviderUnavailable):
+        g.complete("sys", "user")
+    paths = build_suite(tmp_path / "suite", n_clean=1)[:2]
+    agg = run_eval(paths, g, out_dir=tmp_path / "res")            # stops cleanly, does not raise
+    assert agg["n_patients"] == 0 and "unreachable" in agg["stopped_early"]
+    assert (tmp_path / "res" / "summary.json").exists()

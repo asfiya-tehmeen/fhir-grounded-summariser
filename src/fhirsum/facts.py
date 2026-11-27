@@ -3,6 +3,7 @@ scoring, plus deterministic safety checks that are shown to clinicians alongside
 the summary. No LLM is involved here."""
 from __future__ import annotations
 
+import re
 from dataclasses import dataclass, field
 from datetime import timedelta
 
@@ -25,9 +26,63 @@ class Fact:
 
 @dataclass
 class SafetyCheck:
-    kind: str                 # duplicate_medication | allergy_conflict | no_allergy_record | quarantined_text | critical_lab
+    kind: str     # duplicate_medication | allergy_conflict | no_allergy_record | quarantined_text | critical_lab
+                  # | note_conflicts_record
     message: str
     refs: list[str]
+    severity: float = 0.0     # critical_lab: how many times past the limit (ranks the alert banner)
+
+
+# A note sentence that says an ACTIVE drug was stopped, or an ACTIVE allergy was ruled out, contradicts the
+# structured record. It may be a real update the medication list has not caught up with, or poisoning; either way
+# the clinician must see the discrepancy. The sentence is NOT hidden from the model (it can be real clinical news).
+CONFLICT_WORDS = re.compile(r"\b(discontinu\w*|stopped|no longer|ruled out|not allergic|tolerat\w*|removed|"
+                            r"outdated|out of date|left out|omit\w*|no known allerg\w*|resolved)\b", re.I)
+CLASS_WORDS = {"warfarin": ["anticoagulant", "blood thinner"], "apixaban": ["anticoagulant", "blood thinner"],
+               "rivaroxaban": ["anticoagulant", "blood thinner"], "dabigatran": ["anticoagulant", "blood thinner"],
+               "heparin": ["anticoagulant", "blood thinner"], "enoxaparin": ["anticoagulant", "blood thinner"],
+               "insulin": ["insulin"], "metformin": ["diabetes medicine"]}
+SALT_WORDS = {"sodium", "potassium", "hydrochloride", "calcium", "magnesium", "sulfate", "acetate", "citrate",
+              "maleate", "succinate", "tartrate", "besylate", "mesylate", "bromide", "chloride", "hour", "extended",
+              "release", "actuat", "metered", "dose", "inhaler"}
+_SENTENCE = re.compile(r"(?<=[.!?\n])\s+")
+
+
+def note_conflicts(rec: PatientRecord, note_texts: dict[str, str]) -> list[SafetyCheck]:
+    out: list[SafetyCheck] = []
+    targets: list[tuple[str, list[str]]] = []          # (record ref, words that name it)
+    for m in rec.of_type("MedicationRequest", "MedicationStatement"):
+        if rec.is_active(m):
+            # "warfarin sodium 5 MG" -> ["warfarin"]: salts and forms are not how notes name a drug
+            words = [w for w in re.findall(r"[a-z]{4,}", clinical.ingredient_key(rec.med_name(m)))
+                     if w not in SALT_WORDS]
+            for w in list(words):
+                words += CLASS_WORDS.get(w, [])
+            if words:
+                targets.append((ref_of(m), sorted(set(words))))
+    for a in rec.of_type("AllergyIntolerance"):
+        if rec.is_active(a):
+            sub = concept_text(a.get("code")).lower()
+            words = [w for w in re.findall(r"[a-z]{5,}", sub) if w not in ("allergy", "substance", "dietary")]
+            words += [k for k in clinical.ALLERGY_CLASS if k in sub]
+            targets.append((ref_of(a), sorted(set(words)) + ["allerg"]))
+    for doc_ref, txt in note_texts.items():
+        for sent in _SENTENCE.split(txt):
+            if not CONFLICT_WORDS.search(sent):
+                continue
+            low = sent.lower()
+            for ref, words in targets:
+                named = [w for w in words if w != "allerg" and w in low]
+                if named or ("allerg" in words and "no known allerg" in low):
+                    out.append(SafetyCheck("note_conflicts_record",
+                                           f"Note says '{sent.strip()[:140]}' but {ref.split('/')[0]} is active in the "
+                                           "record. Check which is current.", [doc_ref, ref]))
+    seen, uniq = set(), []
+    for c in out:                                   # one alert per (note, resource)
+        k = tuple(c.refs)
+        if k not in seen:
+            seen.add(k); uniq.append(c)
+    return uniq
 
 
 def fitted_rel_change(values: list[float]) -> float:
@@ -85,12 +140,22 @@ def key_facts(rec: PatientRecord) -> list[Fact]:
     if not allergies:
         facts.append(Fact("no_allergy_record", "no_allergy_record", "No allergy record found", [], 3.0))
 
-    for m in rec.of_type("MedicationRequest", "MedicationStatement"):
-        if not rec.is_active(m):
-            continue
-        name = rec.med_name(m)
-        facts.append(Fact(f"med:{m['id']}", "medication", name, [ref_of(m)],
-                          3.0 if clinical.is_high_risk_med(name) else 2.0))
+    if (rec.meta.get("scope") or {}).get("kind") == "admission":
+        # One fact per distinct drug ordered during the stay (any status); any of its orders covers it.
+        # High-risk drugs carry the weight: an admission has a median of 38 distinct drugs and a summary must select.
+        by_name: dict[str, list[dict]] = {}
+        for m in rec.of_type("MedicationRequest", "MedicationStatement"):
+            by_name.setdefault(rec.med_name(m), []).append(m)
+        for name, ms in sorted(by_name.items()):
+            facts.append(Fact(f"med:{ms[0]['id']}", "medication", name, [ref_of(m) for m in ms],
+                              3.0 if clinical.is_high_risk_med(name) else 1.0))
+    else:
+        for m in rec.of_type("MedicationRequest", "MedicationStatement"):
+            if not rec.is_active(m):
+                continue
+            name = rec.med_name(m)
+            facts.append(Fact(f"med:{m['id']}", "medication", name, [ref_of(m)],
+                              3.0 if clinical.is_high_risk_med(name) else 2.0))
 
     for c in rec.of_type("Condition"):
         disp = concept_text(c.get("code"))
@@ -112,7 +177,8 @@ def key_facts(rec: PatientRecord) -> list[Fact]:
     return facts
 
 
-def safety_checks(rec: PatientRecord, quarantined: dict[str, list[str]] | None = None) -> list[SafetyCheck]:
+def safety_checks(rec: PatientRecord, quarantined: dict[str, list[str]] | None = None,
+                  note_texts: dict[str, str] | None = None) -> list[SafetyCheck]:
     checks: list[SafetyCheck] = []
     active_meds = [m for m in rec.of_type("MedicationRequest", "MedicationStatement") if rec.is_active(m)]
     by_ing: dict[str, list[dict]] = {}
@@ -139,10 +205,14 @@ def safety_checks(rec: PatientRecord, quarantined: dict[str, list[str]] | None =
         p = pts[-1]
         lo, hi, _, _ = clinical.REF_RANGES.get(p.code, (p.low, p.high, "", ""))
         if (hi is not None and p.value > hi * 1.5) or (lo is not None and p.value < lo * 0.67):
-            checks.append(SafetyCheck("critical_lab", f"{clinical.short_lab_name(p)} {p.value:g} {p.unit} on {(p.when or '')[:10]} is far outside range", [p.ref]))
+            sev = max(p.value / hi if hi else 0.0, (lo / p.value) if (lo and p.value > 0) else (9.9 if lo else 0.0))
+            checks.append(SafetyCheck("critical_lab", f"{clinical.short_lab_name(p)} {p.value:g} {p.unit} on "
+                                      f"{(p.when or '')[:10]} is far outside range", [p.ref], round(sev, 2)))
     for ref, spans in (quarantined or {}).items():
         checks.append(SafetyCheck("quarantined_text",
                                   f"{len(spans)} instruction-like span(s) in {ref} were withheld from the model", [ref]))
+    if note_texts:
+        checks += note_conflicts(rec, note_texts)
     return checks
 
 

@@ -327,6 +327,8 @@ class Verifier:
         if age is not None and c.kind == "demographic":
             allowed.append(float(age))
         corpus = " ".join(json_text(r) for r in res) + " " + (c.quote or "")
+        corpus += " " + " ".join(self.rec.med_name(r) for r in res
+                                 if r["resourceType"] in ("MedicationRequest", "MedicationStatement"))
         allowed += [float(x) for x in _NUM.findall(corpus)]
         for d in [(resource_date(r) or "")[:10] for r in res]:
             if d:

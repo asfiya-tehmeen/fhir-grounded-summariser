@@ -43,6 +43,9 @@ def main(argv=None):
 
     m = sub.add_parser("mimic-split"); m.add_argument("src"); m.add_argument("--out", default="data/mimic"); m.add_argument("--max", type=int)
 
+    ms = sub.add_parser("mimic-scope", help="cut each MIMIC patient to their latest hospital admission")
+    ms.add_argument("--src", default="data/mimic"); ms.add_argument("--out", default="data/mimic_adm")
+
     sy = sub.add_parser("synthea-import"); sy.add_argument("src"); sy.add_argument("--out", default="data/synthea")
     sy.add_argument("--plant", action="store_true", help="also write trap variants (injections, missing allergies)")
 
@@ -90,6 +93,18 @@ def main(argv=None):
         Path(a.out).write_text(json.dumps(rec.to_bundle(), indent=1), encoding="utf-8")
         print(f"{len(rec.resources)} resources -> {a.out}")
 
+    elif a.cmd == "mimic-scope":
+        from .record import PatientRecord
+        from .scope import scope_admission
+        out = Path(a.out); out.mkdir(parents=True, exist_ok=True)
+        n = skipped = 0
+        for p in sorted(Path(a.src).glob("*.json")):
+            s = scope_admission(PatientRecord.from_file(p))
+            if s is None:
+                skipped += 1; continue
+            (out / f"{p.stem}_adm.json").write_text(json.dumps(s.to_bundle()), encoding="utf-8"); n += 1
+        print(f"wrote {n} admission-scoped bundles to {out} ({skipped} patients had no admission)")
+
     elif a.cmd == "mimic-split":
         from .sources import split_mimic
         ps = split_mimic(a.src, a.out, a.max)
@@ -125,13 +140,19 @@ def main(argv=None):
             status = "PARTIAL" if g.get("stopped_early") else "done"
             print(f"{d.name:40} {g['n_patients']:>4}/{g.get('n_target', '?'):<4}  {status:7}  {pn} -> {pv}{'':14}{rb}")
         if USAGE_LOG.exists():
-            day = time.time() - 86400
+            import datetime as dt
+            # Observed 2026-11-27: usage fits a daily bucket that resets at 00:00 UTC, not a rolling 24h window
+            # (this project logged 306K tokens in 24h on one model with a 200K/day cap).
+            now = dt.datetime.now(dt.timezone.utc)
+            day_start = now.replace(hour=0, minute=0, second=0, microsecond=0).timestamp()
             used: dict[str, int] = {}
             for line in USAGE_LOG.read_text(encoding="utf-8").splitlines():
                 r = json.loads(line)
-                if r["t"] >= day and r["status"] == 200:
+                if r["t"] >= day_start and r["status"] == 200:
                     used[r["model"]] = used.get(r["model"], 0) + (r["prompt_tokens"] or 0) + (r["completion_tokens"] or 0)
-            print("\ntokens used in the last 24h (successful calls; Groq's window is rolling, cap 200K/model):")
+            reset_local = dt.datetime.fromtimestamp(day_start + 86400).strftime("%H:%M")
+            print(f"\ntokens this project used since 00:00 UTC (cap 200K/model/day, shared with other projects on the "
+                  f"key; next reset {reset_local} local):")
             for m, n in sorted(used.items()):
                 print(f"  {m:28} {n:>8,}")
 

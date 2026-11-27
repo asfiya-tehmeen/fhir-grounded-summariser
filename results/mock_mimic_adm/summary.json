@@ -1,0 +1,63 @@
+{
+ "n_patients": 20,
+ "systems": {
+  "template": {
+   "precision": 1.0,
+   "recall_w": 1.0,
+   "temporal_acc": 1.0,
+   "claims_per_patient": 83.4,
+   "fk_grade": 9.21,
+   "latency_s": 0.058,
+   "tokens_per_patient": 0,
+   "first_pass_reject_reasons": {},
+   "first_pass_warnings": {}
+  },
+  "llm_noverify": {
+   "precision": 0.667,
+   "recall_w": 0.03,
+   "temporal_acc": null,
+   "claims_per_patient": 3,
+   "fk_grade": 8.4,
+   "latency_s": 0.0,
+   "tokens_per_patient": 0,
+   "first_pass_reject_reasons": {
+    "unknown_ref": 20
+   },
+   "first_pass_warnings": {}
+  },
+  "llm_verify": {
+   "precision": 1.0,
+   "recall_w": 0.03,
+   "temporal_acc": null,
+   "claims_per_patient": 2,
+   "fk_grade": 4.3,
+   "latency_s": 0.0,
+   "tokens_per_patient": 0,
+   "first_pass_reject_reasons": {
+    "unknown_ref": 20
+   },
+   "first_pass_warnings": {}
+  },
+  "llm_verify_bf": {
+   "precision": 1.0,
+   "recall_w": 0.132,
+   "temporal_acc": null,
+   "claims_per_patient": 6.1,
+   "fk_grade": 10.085,
+   "latency_s": 0.0,
+   "tokens_per_patient": 0,
+   "backfilled_per_patient": 4.1,
+   "first_pass_reject_reasons": {
+    "unknown_ref": 20
+   },
+   "first_pass_warnings": {}
+  }
+ },
+ "repair_skipped": 0,
+ "stopped_early": null,
+ "n_target": 20,
+ "model": "mock:mock",
+ "summary_type": "handoff",
+ "sanitise": true,
+ "prompt": "v1"
+}

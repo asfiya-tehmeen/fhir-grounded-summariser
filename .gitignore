@@ -5,6 +5,7 @@ __pycache__/
 .pytest_cache/
 data/raw/
 data/mimic/
+data/mimic_adm/
 data/synthea/
 data/cache/
 tools/*.jar
